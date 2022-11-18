@@ -247,7 +247,7 @@
 
     
         <meta property="article:published_time" content="Thu Nov 17 2022 15:48:51 GMT+0800">
-        <meta property="article:modified_time" content="Fri Nov 18 2022 00:24:38 GMT+0800">
+        <meta property="article:modified_time" content="Fri Nov 18 2022 15:06:16 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -270,7 +270,7 @@
     "mainEntityOfPage": "http://chemlzh.github.io/2022/11/17/RDC-data-processing-tutorial/index.html",
     "headline": "基于NMRPipe的RDC数据处理教程",
     "datePublished": "Thu Nov 17 2022 15:48:51 GMT+0800",
-    "dateModified": "Fri Nov 18 2022 00:24:38 GMT+0800",
+    "dateModified": "Fri Nov 18 2022 15:06:16 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Clemmensen",
@@ -489,12 +489,14 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h4 id="0-预备知识"><a href="#0-预备知识" class="headerlink" title="0. 预备知识"></a>0. 预备知识</h4><p><strong>残余偶极耦合（Residual Dipolar Coupling，RDC）</strong>是一种基于核磁共振的表征手段，常用于蛋白质动态结构的辅助解析与验证，其原理为：空间上相互邻近，但不具备化学键连的偶极（如^1^H-^15^N原子对）之间，存在直接的电磁相互作用，在溶液中，偶极朝不同方向的分布相同，因而偶极-偶极相互作用平均值为零，无法直接观测；而在液晶或聚合物孔洞等定向程度高的环境，偶极朝不同方向的分布有差异，因此偶极-偶极相互作用平均值不为零（这是“残余（剩余）”一词的由来），表现为J耦合形成的裂分进一步增大或减小，其大小与偶极间的相对朝向有关，故可用于获取化学键的空间取向，以修正蛋白质结构。</p>
-<p><em><em>IPAP-HSQC</em></em><em><em>IPAP-HSQC</em></em>HSQC**，这是一种自旋态选择性HSQC实验，通过在特定时间点交替施加和撤去脉冲，在消除直接维裂分的同时，将间接维裂分转变为方向相同的In-Phase分量和方向相反的Anti-Phase分量，再通过谱图加减，得到记录在不同图谱的高场分量与低场分量，避免信号峰相互叠加，从而大大降低RDC效应的测量难度，其原理大致如图1所示。</p>
-<p><center class="half">
+        <h4 id="0-预备知识"><a href="#0-预备知识" class="headerlink" title="0. 预备知识"></a>0. 预备知识</h4><p><strong>残余偶极耦合（Residual Dipolar Coupling，RDC）</strong>是一种基于核磁共振的表征手段，常用于蛋白质动态结构的辅助解析与验证，其原理为：空间上相互邻近，但不具备化学键连的偶极（如<sup>1</sup>H-<sup>15</sup>N原子对）之间，存在直接的电磁相互作用，在溶液中，偶极朝不同方向的分布相同，因而偶极-偶极相互作用平均值为零，无法直接观测；而在液晶或聚合物孔洞等定向程度高的环境，偶极朝不同方向的分布有差异，因此偶极-偶极相互作用平均值不为零（这是“残余（剩余）”一词的由来），表现为J耦合形成的裂分进一步增大或减小，其大小与偶极间的相对朝向有关，故可用于获取化学键的空间取向，以修正蛋白质结构。</p>
+<p>通常情况下，测定RDC的常用核磁方法为<strong>IPAP-HSQC</strong>，这是一种自旋态选择性HSQC实验，通过在特定时间点交替施加和撤去脉冲，在消除直接维裂分的同时，将间接维裂分转变为方向相同的In-Phase分量和方向相反的Anti-Phase分量，再通过谱图加减，得到记录在不同图谱的高场分量与低场分量，避免信号峰相互叠加，从而大大降低RDC效应的测量难度，其原理大致如图1所示。</p>
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig1.png" style="zoom: 50%;">
-</center></p>
-<p><center><strong>图1</strong>    IPAP-HSQC测定RDC示意图</center><em><em>NMRPipe</em></em>*是由John Marino课题组与Ad Bax课题组联合开发的，适用于Unix及衍生系统的老牌核磁共振谱图处理软件。利用NMRPipe，可以把获得的原始IPAP谱图，拆分为独立的高场与低场分量，并能对拆分后的谱图进行相位调整、峰标记与峰归属（在预先准备归属文件的前提下）。</p>
+</center>
+<center><strong>图1</strong>    IPAP-HSQC测定RDC示意图</center>
+
+<p><strong>NMRPipe</strong>是由John Marino课题组与Ad Bax课题组联合开发的，适用于Unix及衍生系统的老牌核磁共振谱图处理软件。利用NMRPipe，可以把获得的原始IPAP谱图，拆分为独立的高场与低场分量，并能对拆分后的谱图进行相位调整、峰标记与峰归属（在预先准备归属文件的前提下）。</p>
 <p>不过，由于NMRPipe并未将所有功能集成在一个GUI界面，而是采用命令行与简陋GUI相结合的方式，这对习惯于Windows的用户而言，无疑增加了操作难度，因此，笔者试着整理了一份基于NMRPipe的RDC数据处理教程，希望对NMRPipe新人有所帮助。</p>
 <h4 id="I-NMRPipe的安装"><a href="#I-NMRPipe的安装" class="headerlink" title="I. NMRPipe的安装"></a>I. NMRPipe的安装</h4><p><strong>1. 安装包下载：</strong>访问<a target="_blank" rel="noopener" href="https://www.ibbr.umd.edu/nmrpipe/install.html">NMRPipe官网</a>，下载四个文件：NMRPipeX.tZ（NMRPipe源文件）、s.tZ（NMRPipe补丁和更新文件）、install.com（安装脚本）、binval.com（配合安装脚本使用的脚本）。如有需要，可以下载另外几个补充包：dyn.tZ（似乎用于在TALOS+中绘制拉氏图，同时存有DYNAMO and MFR），talos_nmrPipe.tZ（TALOS-N, TALOS+, and SPARTA+的必要运行文件），plugin.smile.tZ（SMILE NUS谱图重构程序）。</p>
 <p><strong>2. 将终端切换为C-shell：</strong>输入chsh -s /bin/tcsh，回车（没有tcsh/csh的情况下，首先用sudo yum(for RHEL-based Linux)/apt-get(for Ubuntu) install -y）。</p>
@@ -519,10 +521,12 @@ sudo apt-get install xfonts-75dpi
 sudo apt-get install msttcorefonts
 </code></pre>
 <p>要注意的是，安装msttcorefonts时，在命令行下会弹出一个EULA协议的窗口，类似于下图所示，此时需要按Tab键，让光标转到《OK》上，然后回车，接下来按方向键，使光标停在《YES》上，回车即可。</p>
-<p><center class="half">
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/muo-linux-ms-fonts-eula.webp" style="zoom: 80%;">
-</center></p>
-<p><center><strong>图1.5</strong>    万恶的EULA协议，害得我不知道怎么进行下一步操作</center><em><em>4. 更改文件读写权限并安装：</em></em>*将四个文件放入指定文件夹中（如/home/（你的用户名）/NMRPipe），在该文件夹打开终端，输入：</p>
+</center>
+<center><strong>图1.5</strong>    万恶的EULA协议，害得我不知道怎么进行下一步操作</center>
+
+<p><strong>4. 更改文件读写权限并安装：</strong>将四个文件放入指定文件夹中（如/home/（你的用户名）/NMRPipe），在该文件夹打开终端，输入：</p>
 <pre><code class="lang-bash">chmod a+r  *.tZ *.Z *.tar
 chmod a+rx *.com
 </code></pre>
@@ -547,40 +551,52 @@ nmrDraw                (Run the graphical interface)
  endif
 </code></pre>
 <h4 id="II-用NMRPipe处理IPAP-HSQC谱，并获取RDC数据"><a href="#II-用NMRPipe处理IPAP-HSQC谱，并获取RDC数据" class="headerlink" title="II. 用NMRPipe处理IPAP-HSQC谱，并获取RDC数据"></a>II. 用NMRPipe处理IPAP-HSQC谱，并获取RDC数据</h4><p><strong>1.图谱格式转换：</strong>在原始图谱的文件夹中打开终端，输入bruker，回车，接下来会弹出如下窗口</p>
-<p><center class="half">
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig2.png" style="zoom: 45%;">
-</center></p>
-<p><center><strong>图2</strong>    运行bruker后弹出的窗口</center><br>点击红框中的“Read Parameters”，程序将读入图谱中的各项参数。接下来按照图片顺序，点击红框，调整各项参数</p>
-<p><center class="half">
+</center>
+<center><strong>图2</strong>    运行bruker后弹出的窗口</center>
+点击红框中的“Read Parameters”，程序将读入图谱中的各项参数。接下来按照图片顺序，点击红框，调整各项参数
+
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig3.png" style="zoom: 45%;">
-</center></p>
-<p><center><strong>图3</strong>    对bruker参数的设定（1）</center></p>
-<p><center class="half">
+</center>
+<center><strong>图3</strong>    对bruker参数的设定（1）</center>
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig4.png" style="zoom: 45%;">
-</center></p>
-<p><center><strong>图4</strong>    对bruker参数的设定（2）</center><br>最后先后点击“Save Script”→“Execute Script”，完成图谱转换，得到test.fid</p>
-<p><center class="half">
+</center>
+<center><strong>图4</strong>    对bruker参数的设定（2）</center>
+最后先后点击“Save Script”→“Execute Script”，完成图谱转换，得到test.fid
+
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig5.png" style="zoom: 45%;">
-</center></p>
-<p><center><strong>图5</strong>    运行bruker生成的转换脚本</center><em><em>2.图谱的初步处理（HSQC及其衍生谱必做！）</em></em>*</p>
+</center>
+<center><strong>图5</strong>    运行bruker生成的转换脚本</center>
+
+<p><strong>2.图谱的初步处理（HSQC及其衍生谱必做！）</strong></p>
 <p>将处理脚本hsqc.com复制到原始图谱的文件夹中，接着输入下列命令，赋予当前用户读写和运行脚本的权限，且能以可执行文件运行。（以后若不说明，所有.com脚本从本地上传至服务器后，或从Windows传至Linux虚拟机后，均执行此步骤）</p>
 <pre><code class="lang-bash">chmod +755 hsqc.com
 </code></pre>
 <p>然后在终端中输入./hsqc.com，回车，得到初步处理后的二维图谱。</p>
 <p>这样处理的图谱相位未必准确，所以我们要在NMRDraw中微调相位，使基线平齐，然后在hsqc.com中修改相位参数，再重复上述步骤。</p>
 <p>在原始图谱的文件夹打开终端，输入nmrDraw，回车，会弹出如下窗口，此时右键单击“File”→“S) Select File”：</p>
-<p><center class="half">
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig6.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图6</strong>    运行nmrDraw后弹出的窗口</center><br>便会弹出一个“打开文件”的窗口，双击选中test.ft2，然后点击窗口下部分的Read/Draw按钮，便会绘制出初步调整后的HSQC谱。</p>
-<p><center class="half">
+</center>
+<center><strong>图6</strong>    运行nmrDraw后弹出的窗口</center>
+便会弹出一个“打开文件”的窗口，双击选中test.ft2，然后点击窗口下部分的Read/Draw按钮，便会绘制出初步调整后的HSQC谱。
+
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig7.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图7</strong>    单击“S) Select File”后弹出的窗口</center><br>按H键，打开水平轴（^1^H）的NMR谱，点击图上信号明显的峰（尽量选取水平线上峰数较少的位置），便可查看点击位置水平线上的核磁信号；同理，按V键打开的是垂直轴（^15^N）的NMR谱。选取合适的基线参照位置后，可以拖动左上方工具栏的滑块（如红框所示），调节0阶和1阶校正的参数大小，或是直接输入具体数值调节。待基线平整，且信号峰显著，无杂峰干扰后，退出NMRDraw，修改.hsqc中相位校正的参数，然后重新运行.hsqc</p>
-<p><center class="half">
+</center>
+<center><strong>图7</strong>    单击“S) Select File”后弹出的窗口</center>
+
+<p>按H键，打开水平轴（<sup>1</sup>H）的NMR谱，点击图上信号明显的峰（尽量选取水平线上峰数较少的位置），便可查看点击位置水平线上的核磁信号；同理，按V键打开的是垂直轴（<sup>15</sup>N）的NMR谱。选取合适的基线参照位置后，可以拖动左上方工具栏的滑块（如红框所示），调节0阶和1阶校正的参数大小，或是直接输入具体数值调节。待基线平整，且信号峰显著，无杂峰干扰后，退出NMRDraw，修改.hsqc中相位校正的参数，然后重新运行.hsqc</p>
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig8.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图8</strong>    在nmrDraw中预先调整谱图相位</center><em><em>附：fid.com的代码（代码不唯一，以bruker命令生成的为准）</em></em>*</p>
+</center>
+<center><strong>图8</strong>    在nmrDraw中预先调整谱图相位</center>
+
+<p><strong>附：fid.com的代码（代码不唯一，以bruker命令生成的为准）</strong></p>
 <pre><code class="lang-bash">#!/bin/csh
 
 bruk2pipe -verb -in ./ser \
@@ -626,7 +642,7 @@ nmrPipe -in test.ft2| pipe2xyz -nv -out hsqc.nv -verb -ov
 addNMR -in1 testA.ft2 -in2 testB.ft2 -sub -out sub.ft2
 </code></pre>
 <p>生成相加的图谱add.ft2和相减的图谱sub.ft2</p>
-<p>同样要注意的是，按默认参数生成的add.ft2和sub.ft2相位可能存在较大偏差，导致最终在图上呈现的峰并非均一的单峰，甚至杂乱无章，此时需要按照第2部分所述调整水平轴（1H）和垂直轴（15N）的相位，然后在2p-pre.com中修改相位调整语句的参数，再重新运行2p-pre.com，最后对谱图加减。</p>
+<p>同样要注意的是，按默认参数生成的add.ft2和sub.ft2相位可能存在较大偏差，导致最终在图上呈现的峰并非均一的单峰，甚至杂乱无章，此时需要按照第2部分所述调整水平轴（<sup>1</sup>H）和垂直轴（<sup>15</sup>N）的相位，然后在2p-pre.com中修改相位调整语句的参数，再重新运行2p-pre.com，最后对谱图加减。</p>
 <p><strong>附：2p-pre.com的代码</strong></p>
 <pre><code class="lang-bash">#!/bin/csh
 
@@ -669,50 +685,66 @@ nmrPipe -in test.fid \
 <p><strong>4.对加减处理后的图谱标峰</strong></p>
 <p>以IPAP谱为例，我们需要给add.ft2和sub.ft2的信号峰标上序号，以便与标准谱图进行比较。</p>
 <p>在当前终端输入nmrDraw，回车，按第2部分打开并读取add.ft2。如果怀疑当前图谱遗漏了重要的谱峰信号，可以点击“Factor”右边的“-”，减小信号显示阈值，然后点击“Draw”；如果感觉谱图杂峰较多，可以点击“Factor”右边的“+”，增大信号显示阈值，然后点击“Draw”；如果需要进一步微调，还可以直接在First右边的空格中，输入自己认为合适的检测阈值，回车后点击“Draw”。接下来，右键单击“Peak”→“K） Peak Detection”</p>
-<p><center class="half">
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig9.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图9</strong>    在nmrDraw中打开标峰窗口</center><br>此时便会弹出“Peak Detection”对话框，然后单击“Detect”按钮，标出图中所有峰的序号，之后更改峰序号表为“test_add.tab”，点击“Save”保存后即可退出。</p>
-<p><center class="half">
+</center>
+<center><strong>图9</strong>    在nmrDraw中打开标峰窗口</center>
+
+<p>此时便会弹出“Peak Detection”对话框，然后单击“Detect”按钮，标出图中所有峰的序号，之后更改峰序号表为“test_add.tab”，点击“Save”保存后即可退出。</p>
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig10.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图10</strong>    在nmrDraw中标记所有显示的信号峰</center><br>用同样的方法，可以得到sub.ft2的峰序号表“test_sub.tab”，之后就可以比照标准图谱，进行峰的指认。</p>
+</center>
+<center><strong>图10</strong>    在nmrDraw中标记所有显示的信号峰</center>
+
+<p>用同样的方法，可以得到sub.ft2的峰序号表“test_sub.tab”，之后就可以比照标准图谱，进行峰的指认。</p>
 <p><strong>5.峰的指认</strong></p>
 <p>为完成峰的指认，通常需要准备一张已经标好信号峰与其归属残基的标准图谱。此处以泛素蛋白为例，其标准图谱的归属保存于wtUb_ass.tab，放置在与add.ft2和sub.ft2所处的文件夹下。我们需要在终端输入命令：</p>
 <pre><code class="lang-bash">ipap.tcl -inName1 test_add.tab -specName1 add.ft2 -assName wtUb_ass.tab -single
 </code></pre>
 <p>这样就可以开始对add.ft2的指认，此时会跳出如下窗口：</p>
-<p><center class="half">
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig11.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图11</strong>    按正确格式运行ipap.tcl的结果</center><br>可以看到指认界面由若干部分组成：指认表（第一列为标准图谱中残基氨基酸代号和在多肽中的序号，第二列为测定图谱的序号，点击Next和Prev会跳转到上一个标准图谱序号对应的位置），指认图谱（含标准图谱和测定图谱的序号，红色方框为当前标准图谱序号对应的位置，绿色方框为测定图谱中指认的对应峰的位置）</p>
+</center>
+<center><strong>图11</strong>    按正确格式运行ipap.tcl的结果</center>
+
+<p>可以看到指认界面由若干部分组成：指认表（第一列为标准图谱中残基氨基酸代号和在多肽中的序号，第二列为测定图谱的序号，点击Next和Prev会跳转到上一个标准图谱序号对应的位置），指认图谱（含标准图谱和测定图谱的序号，红色方框为当前标准图谱序号对应的位置，绿色方框为测定图谱中指认的对应峰的位置）</p>
 <p>由于指认图谱只显示一小部分，因此可以调节x轴和y轴的比例尺，使谱图显示得更为完整。例如输入以下命令并执行：</p>
 <pre><code class="lang-bash">ipap.tcl -inName1 test_add.tab -specName1 add.ft2 -assName wtUb_ass.tab -single -xv 1 -yv 3
 </code></pre>
 <p>此时会跳出如下窗口：</p>
-<p><center class="half">
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig12.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图12</strong>    在ipap.tcl运行命令中加入-xv和-yv选项的结果</center><br>根据周围几个残基位移的大小，我们可以挪移标准图谱，使其与测定图谱对齐，例如输入以下命令并执行：</p>
+</center>
+<center><strong>图12</strong>    在ipap.tcl运行命令中加入-xv和-yv选项的结果</center>
+
+<p>根据周围几个残基位移的大小，我们可以挪移标准图谱，使其与测定图谱对齐，例如输入以下命令并执行：</p>
 <pre><code class="lang-bash">ipap.tcl -inName1 test_add.tab -specName1 add.ft2 -assName wtUb_ass.tab -single -xOff -0.025 -yOff 0.8
 </code></pre>
 <p>此时会跳出如下窗口：</p>
-<p><center class="half">
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig13.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图13</strong>    在ipap.tcl运行命令中加入-xOff和-yOff选项的结果</center><br>可以看到红色方框与绿色方框已经对准，此时点击指认表的“Next”，查看其余残基归属是否正确，如果某个残基缺乏归属，便不会出现对应的绿框，如下图所示</p>
-<p><center class="half">
+</center>
+<center><strong>图13</strong>    在ipap.tcl运行命令中加入-xOff和-yOff选项的结果</center>
+
+<p>可以看到红色方框与绿色方框已经对准，此时点击指认表的“Next”，查看其余残基归属是否正确，如果某个残基缺乏归属，便不会出现对应的绿框，如下图所示</p>
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig14.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图14</strong>    残基与实验信号峰缺乏对应时的界面</center><br>此时点击（你认为正确的归属位置对应的）灰色方框（如上图大红框所示），就可以将标准谱图的峰归属到测定谱图中“正确”的位置上，相应的，灰色方框就会变成绿色方框，代表红色小方框对应的残基标准位置，在实验谱图中对应于绿色小方框的位置</p>
-<p><center class="half">
+</center>
+<center><strong>图14</strong>    残基与实验信号峰缺乏对应时的界面</center>
+
+<p>此时点击（你认为正确的归属位置对应的）灰色方框（如上图大红框所示），就可以将标准谱图的峰归属到测定谱图中“正确”的位置上，相应的，灰色方框就会变成绿色方框，代表红色小方框对应的残基标准位置，在实验谱图中对应于绿色小方框的位置</p>
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig15.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图15</strong>    残基与实验信号峰存在对应时的界面</center><br>确认所有峰归属到正确位置上后（当然，有些标准图谱的峰在测定图谱中没有出现，这样的峰可以跳过），点击指认表的按钮“Save”，弹出保存窗口，重命名归属结果为sum.add_ass.tab，点击“Save”保存，之后即可退出指认窗口。用同样的方法，指认sub.ft2，将归属结果保存于sum.sub_ass.tab。</p>
-<p><center class="half">
+</center>
+<center><strong>图15</strong>    残基与实验信号峰存在对应时的界面</center>
+
+<p>确认所有峰归属到正确位置上后（当然，有些标准图谱的峰在测定图谱中没有出现，这样的峰可以跳过），点击指认表的按钮“Save”，弹出保存窗口，重命名归属结果为sum.add_ass.tab，点击“Save”保存，之后即可退出指认窗口。用同样的方法，指认sub.ft2，将归属结果保存于sum.sub_ass.tab。</p>
+<center class="half">
 <img src="/2022/11/17/RDC-data-processing-tutorial/RDC_doc_fig16.png" style="zoom: 30%;">
-</center></p>
-<p><center><strong>图16</strong>    保存归属结果时弹出的窗口</center><em><em>后记：</em></em>*之前听老师讲解ipap.tcl的使用，突然发现只需输入如下命令，便能实现在同一界面下，同时归属IPAP拆分的两张谱。此时，标准图谱的峰最好位于高场分量与低场分量的正中间，便于归属时对照方便。要注意的是，使用该命令打开ipap.tcl后，保存时会提示先保存第一张谱的归属文件，然后提示保存第二张谱的归属文件，对于下列命令，意味着先保存add.ft2对应的归属文件，后保存sub.ft2对应的归属文件。</p>
+</center>
+<center><strong>图16</strong>    保存归属结果时弹出的窗口</center>
+
+<p><strong>后记：</strong>之前听老师讲解ipap.tcl的使用，突然发现只需输入如下命令，便能实现在同一界面下，同时归属IPAP拆分的两张谱。此时，标准图谱的峰最好位于高场分量与低场分量的正中间，便于归属时对照方便。要注意的是，使用该命令打开ipap.tcl后，保存时会提示先保存第一张谱的归属文件，然后提示保存第二张谱的归属文件，对于下列命令，意味着先保存add.ft2对应的归属文件，后保存sub.ft2对应的归属文件。</p>
 <pre><code class="lang-bash">ipap.tcl -inName1 test_add.tab -specName1 add.ft2 -inName2 test_sub.tab -specName2 sub.ft2 -assName wtUb_ass.tab -single -xOff -0.025 -yOff 0.8
 </code></pre>
 <p>此外，归属时有个小技巧：对于已经标记（显示为绿色方框）但是很明显对应错误的峰，可以用右键单击的方式将其取消，此时绿色方框会变成灰色方框，且原有的“等号+残基名”的标记将会消失，代表这个实验测出来的峰清空了原有归属。</p>
@@ -754,7 +786,7 @@ tar -xzvf xplor-nih-VERSION-db.tar.gz
 </code></pre>
 <p>4.后续调整：以管理员（root）身份登录，在/home/（你的用户名）/Xplor/opt/xplor-nih-VERSION打开终端，输入./configure -symlinks DIR，回车。其中DIR为\$PATH所在位置，如\$HOME/bin或/usr/local/bin，可以用echo \$PATH获取。</p>
 <p>5.测试Xplor运行情况：以普通用户身份登录，在/home/（你的用户名）/Xplor/opt/xplor-nih-VERSION打开终端，输入bin/testDist，回车。</p>
-<p><em><em>脚本安装法</em></em>*</p>
+<p><strong>脚本安装法</strong></p>
 <p>1.脚本下载：访问<a target="_blank" rel="noopener" href="https://nmr.cit.nih.gov/xplor-nih/">Xplor-NIH</a>并登录，下载最新版本的installer-linux-VERSION.sh，并拷贝至/home/（你的用户名）/Xplor/opt</p>
 <p>2.运行安装脚本：打开终端，输入chmod 777 installer-linux-VERSION.sh，回车（有GUI者，右键点属性→权限，全部修改为“允许读取、写入和执行”），然后输入./installer-linux-VERSION.sh，回车，等待压缩包全部下载并解压。</p>
 <p>3.后续调整和测试：同“直接解压缩法”第4、5步。</p>
