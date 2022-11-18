@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Gaussian 16 &amp; GaussView 6安装教程 | 
+        
+        克莱门森的实验室
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",量子化学,计算化学,Gaussian">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="克莱门森的实验室">
+    <meta name="msapplication-starturl" content="http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="克莱门森的实验室">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Gaussian 16 &amp; GaussView 6安装教程 | 克莱门森的实验室">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="量子化学"> <meta property="og:article:tag" content="计算化学"> <meta property="og:article:tag" content="Gaussian"> 
+
+    
+        <meta property="article:published_time" content="Thu Nov 17 2022 21:49:05 GMT+0800">
+        <meta property="article:modified_time" content="Fri Nov 18 2022 00:28:19 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/index.html",
+    "headline": "Gaussian 16 & GaussView 6安装教程",
+    "datePublished": "Thu Nov 17 2022 21:49:05 GMT+0800",
+    "dateModified": "Fri Nov 18 2022 00:28:19 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Clemmensen",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "克莱门森的实验室",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",量子化学,计算化学,Gaussian",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Part-I-Gaussian-16%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="post-toc-number">1.</span> <span class="post-toc-text">Part I. Gaussian 16的安装与环境变量的配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Part-II-GaussView-6%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="post-toc-number">2.</span> <span class="post-toc-text">Part II. GaussView 6的安装与环境变量的配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Part-III-%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4%EF%BC%9AGaussView-6%E5%9C%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E4%B8%8B%E8%83%BD%E8%BF%90%E8%A1%8C%EF%BC%8C%E5%9C%A8MobaXterm%E7%9A%84%E8%BF%9C%E7%A8%8B%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8D%B4%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8C"><span class="post-toc-number">3.</span> <span class="post-toc-text">Part III. 故障排除：GaussView 6在图形界面下能运行，在MobaXterm的远程客户端却无法运行</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/2022/11/17/Gaussian-installation-tutorial/thumbnail.png)">
+    
+            <p class="article-headline-p">
+                Gaussian 16 & GaussView 6安装教程
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Clemmensen</strong>
+        <span>11月 17, 2022</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/Gaussian/" rel="tag">Gaussian</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/computational-chemistry/" rel="tag">计算化学</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/quantum-chemistry/" rel="tag">量子化学</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Gaussian 16 &amp; GaussView 6安装教程&url=http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/index.html&pic=http://chemlzh.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Gaussian 16 &amp; GaussView 6安装教程&url=http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/index.html&via=Clemmensen" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>【最近在Ubuntu服务器上安装GaussView 6频繁报错，最后发现是渲染软件的问题，只能说今天实在爆炸（此处应有大声咆哮）】</p>
+<p>【真的，但凡Linux你统一一下系统库文件的标准命名，加一个人性化的报错提示，也不至于让我找缺失哪个包找半天】</p>
+<h4 id="Part-I-Gaussian-16的安装与环境变量的配置"><a href="#Part-I-Gaussian-16的安装与环境变量的配置" class="headerlink" title="Part I. Gaussian 16的安装与环境变量的配置"></a>Part I. Gaussian 16的安装与环境变量的配置</h4><p><em><em><a target="_blank" rel="noopener" href="http://sobereva.com/439">Gaussian的安装方法及运行时的相关问题</a></em></em>相关问题](<a target="_blank" rel="noopener" href="http://sobereva.com/439)**，以下安装过程仅在此文章基础上稍加调整。">http://sobereva.com/439)**，以下安装过程仅在此文章基础上稍加调整。</a></p>
+<ol>
+<li>将Gaussian安装包G16-B01_DownLoadLy.iR.tar.gz放在公共软件根目录/smb/open-apps下，输入下列命令将其解压，得到文件夹g16：</li>
+</ol>
+<pre><code class="lang-bash">tar -xzvf G16-B01_DownLoadLy.iR.tar.gz
+</code></pre>
+<ol>
+<li>建立一个文件夹用于储存Gaussian运行过程中产生的临时文件，位置随意。此处笔者将临时文件夹放在g16下，其位置为/smb/open-apps/g16/scratch</li>
+<li>修改个人环境变量，以测试g16能否正常运行：用vi或者gedit等文本编辑器打开/home/lizh/.bashrc（笔者的bash环境变量），在里面加入以下语句然后保存文件。</li>
+</ol>
+<pre><code class="lang-bash">export g16root=/smb/open-apps/
+export GAUSS_SCRDIR=/smb/open-apps/g16/scratch
+source /smb/open-apps/g16/bsd/g16.profile
+</code></pre>
+<p>其中，g16root环境变量用来说明Gaussian目录被放在了哪个目录下。GAUSS_SCRDIR环境变量用来说明哪个文件夹作为临时文件夹。source命令用来执行Gaussian自带的脚本文件，内含各种配置Gaussian运行环境的命令。重新进入终端使以上内容生效（如果你是用Linux图形环境，就关闭终端窗口，然后重新打开。如果你是通过ssh方式登录服务器，就断开连接，然后重新连接服务器）</p>
+<ol>
+<li>Gaussian目录下的Default.Route用来设定默认用的计算资源，-M-设置默认用的最大内存量（一般用MB或GB为单位），-P-设置默认用多少CPU核数来并行计算。比如我们想默认用24个核心、最大40GB内存做计算，就在/smb/open-apps/g16/Default.Route里面写入以下内容</li>
+</ol>
+<pre><code class="lang-bash">-M- 40GB
+-P- 24
+</code></pre>
+<p>此文件中的设置优先级低于输入文件里的%mem和%nproc设置。因此，输入文件里没写%mem的时候才会用这里的-M-设置，输入文件里没写%nproc的时候才会使用这里的-P-设置（如果你既没在这里设-P-也没写%nproc，那么程序只用单核计算。如果你既没在这里设-M-也没写%mem，那么G09最多用256MB内存，G16最多用800MB内存）。</p>
+<ol>
+<li>为保证只有特定用户组才能使用Gaussian 16，我们可以用groupadd命令创建一个新组：</li>
+</ol>
+<pre><code class="lang-bash">groupadd tanglab
+</code></pre>
+<p>再将每一个新用户加入进tanglab用户组（此处的(username)代表要改动的用户名）：</p>
+<pre><code class="lang-bash">usermod -G -a tanglab (username)
+</code></pre>
+<p><em>命令，之后Gaussian就可以使用了。这里-R </em><em>命令，之后Gaussian就可以使用了。这里-R </em>ian就可以使用了。这里-R *代表对当前目录下所有文件和所有子目录下的文件都设置权限。对于其下的/scratch，由于Gaussian 16要读写此处的临时文件，因此运行chmod 775 -R /scratch，让同一用户组的所有用户都能读写此文件夹和其中的文件。</p>
+<ol>
+<li>用sudo vim /etc/bash.bashrc打开bash.bashrc文件，将/home/lizh/.bashrc中写入的Gaussian环境变量复制到其中，保存后输入source /etc/bash.bashrc并运行，以设置全局环境变量。</li>
+</ol>
+<h4 id="Part-II-GaussView-6的安装与环境变量的配置"><a href="#Part-II-GaussView-6的安装与环境变量的配置" class="headerlink" title="Part II. GaussView 6的安装与环境变量的配置"></a>Part II. GaussView 6的安装与环境变量的配置</h4><ol>
+<li>将GaussView安装包gv6.tar.bz2放在公共软件根目录/smb/open-apps下，输入下列命令将其解压，得到文件夹gv</li>
+</ol>
+<pre><code class="lang-bash">tar -xjvf gv6.tar.bz2
+</code></pre>
+<ol>
+<li>修改个人环境变量，以测试GaussView能否正常运行：用vi或者gedit等文本编辑器打开/home/lizh/.bashrc（笔者的bash环境变量），在里面加入以下语句然后保存文件。</li>
+</ol>
+<pre><code class="lang-bash">export GV_DIR=/smb/open-apps/gv/
+export LIBPATH=/smb/open-apps/gv
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/smb/open-apps/gv/lib
+PATH=$PATH:/smb/open-apps/gv
+alias gv=&#39;/smb/open-apps/gv/gview.sh&#39;
+</code></pre>
+<p>重新进入终端，或运行source .bashrc，使以上内容生效。如果环境变量配置正确，便能正常弹出GaussView 6的工作界面。</p>
+<ol>
+<li>用sudo vim /etc/bash.bashrc打开bash.bashrc文件，将/home/lizh/.bashrc中写入的Gaussian环境变量复制到其中，保存后输入source /etc/bash.bashrc并运行，以设置全局环境变量。</li>
+</ol>
+<h4 id="Part-III-故障排除：GaussView-6在图形界面下能运行，在MobaXterm的远程客户端却无法运行"><a href="#Part-III-故障排除：GaussView-6在图形界面下能运行，在MobaXterm的远程客户端却无法运行" class="headerlink" title="Part III. 故障排除：GaussView 6在图形界面下能运行，在MobaXterm的远程客户端却无法运行"></a>Part III. 故障排除：GaussView 6在图形界面下能运行，在MobaXterm的远程客户端却无法运行</h4><p>然而，离奇的事情总是发生在安装完成之后——当笔者在MobaXterm的远程客户端上，向bash命令行输入gv并回车后，客户端先是卡顿片时，随后弹出一个白色小框（对应于GaussView的欢迎界面）后迅速消失，并报出如下错误：segmentation fault (core dumped)。笔者以为能在GaussView的安装根目录找到转储文件，访问gv文件夹后却一无所获。</p>
+<p><strong>初步排查：</strong>笔者首先怀疑是下载的安装包可能损坏，导致部分文件无法使用，于是从另一个装有GaussView 6的服务器上拷贝了整份GaussView 6，并上传到出现Bug的服务器上，以替换原来的GaussView 6。结果很可惜，运行gv命令后GaussView仍无法打开，且显示的错误仍然为segmentation fault (core dumped)。笔者随后怀疑配置的环境变量写法有问题，因此把export GV_DIR=/smb/open-apps/gv/改为export GV_DIR=/smb/open-apps/gv/bin，export LIBPATH=/smb/open-apps/gv改为export LIBPATH=/smb/open-apps/gv/lib，但重新加载环境变量文件后，发现问题仍然没有解决。</p>
+<p>于是笔者想到：会不会在带有GUI的服务器端运行，也会出现同样的问题？于是笔者第二天一早，便登录服务器端的图形界面，并在该界面中打开终端，输入gv后回车。令人惊讶的是，执行命令后，屏幕上直接跳出了GaussView的欢迎界面，随后便加载出GaussView的菜单和绘制区域。这让我更加疑惑：既然在图形界面下能正常加载窗口，那为什么到只有文字的MobaXterm终端，GaussView就不能运行？</p>
+<p>而后，同实验室的同学（江意达）用他自己的账户，在MobaXterm上同样试运行了gv，结果同样出现了白色方框闪现后消失，且主界面未能成功加载的错误，但是反馈的错误信息不是“segmentation fault (core dumped)”，而是“can’t connect to x11 window server using localhost:0.0”（记不清了，总之大致意思是X11未能成功连接，导致GaussView无法运行）。这样，问题基本锁定在MobaXterm上：正是MobaXterm缺乏某种必要的库文件，才导致X11无法成功连接，进而无法运行GaussView 6的图形界面。（后记：意达告诉笔者，X11没能成功连接，是因为没有登入正确账户）</p>
+<p>但是，在昨晚的故障排查中，笔者已经装过X11相关的所有必要文件（包括库文件等），而错误仍然没有消除，因此X11不是导致故障的主要原因。由此，整个故障排查陷入僵局。</p>
+<p><strong>问题根源：</strong>后来，在搜寻X11导致的GaussView报错的案例时，我发现了<a target="_blank" rel="noopener" href="https://csc.cnsi.ucsb.edu/docs/gaussview">UCSB计算中心对这一错误的介绍和解决方案</a>：</p>
+<blockquote>
+<p><strong><em>Note: As of 2016, if you are having trouble with Gaussview starting, with errors about “X11”, “XQuarta” or “OpenGL is not available”, try to type this first.</em></strong></p>
+<p><strong><em>export USE_MESAGL=1</em></strong></p>
+</blockquote>
+<p><em><em>很可能是OpenGL未能正确加载所引起的结果！</em></em><em><em>很可能是OpenGL未能正确加载所引起的结果！</em></em>的结果！**由于适配于Ubuntu的OpenGL，实际上为开源软件MesaGL，而GaussView在默认情况下，只会调用OpenGL，而不会调用MesaGL，因此绘制软件窗口时，就会因为没有图形引擎而无法完成，进而报错。因此，只要让GaussView启动时，自动加载MesaGL，便能正确绘制图形界面，继而消除该错误。当然，对于“图形界面下能正常加载GaussView，而纯命令行窗口不能”这一问题，笔者认为，图形界面下，OpenGL/MesaGL已经处于开启状态，当用户输入命令启动GaussView时，GaussView会自动调用启动的OpenGL/MesaGL，以加载图形窗口，因此不会报错，而纯命令行下不会自动开启OpenGL/MesaGL，因此启动GaussView会报错。</p>
+<p><strong>解决方案：</strong>根据上述分析，笔者很快得到了解决方案：在/home/lizh/.bashrc（本地用户环境变量）或/etc/bash.bashrc（全局环境变量）中，加入export USE_MESAGL=1，这样，即使使用的是纯命令行界面，当输入gv并回车后，也会启动系统安装的MesaGL，这样就解决了因缺乏图形引擎导致的故障。</p>
+<p><strong>补充说明——如何安装MesaGL库：</strong>以Ubuntu为例，首先要安装必要的编译器，这样才能在后续的安装过程中，编译源码文件：</p>
+<pre><code class="lang-bash">sudo apt-get install build-essential
+</code></pre>
+<p>接着是安装OpenGL运行库（OpenGL Library，实质为MesaGL Library）</p>
+<pre><code class="lang-bash">sudo apt-get install libgl1-mesa-dev
+</code></pre>
+<p>然后是安装OpenGL效用库（OpenGL Utilities，实质为MesaGL Utilities）</p>
+<pre><code class="lang-bash">sudo apt-get install libglu1-mesa-dev
+</code></pre>
+<p>以及安装OpenGL效用库工具（OpenGL Utility Toolkit，实质为MesaGL Utility Toolkit）</p>
+<pre><code class="lang-bash">sudo apt-get install freeglut3-dev
+</code></pre>
+<p>如果怕缺失关键的库文件，可以试着运行下列命令</p>
+<pre><code class="lang-bash">sudo apt-get install libglew-dev libsdl2-dev libsdl2-image-dev libglm-dev libfreetype6-dev
+sudo apt-get install libglfw3-dev libglfw3
+</code></pre>
+<p>这样应该能保证MesaGL库安装完全。</p>
+<p><strong>参考资料：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40520596/article/details/111663646">https://blog.csdn.net/qq_40520596/article/details/111663646</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liubing8609/article/details/102863044?spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4-102863044-blog-111663646.pc_relevant_multi_platform_whitelistv3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4-102863044-blog-111663646.pc_relevant_multi_platform_whitelistv3&amp;utm_relevant_index=7">https://blog.csdn.net/liubing8609/article/details/102863044?spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4-102863044-blog-111663646.pc_relevant_multi_platform_whitelistv3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-4-102863044-blog-111663646.pc_relevant_multi_platform_whitelistv3&amp;utm_relevant_index=7</a></p>
+<p><a target="_blank" rel="noopener" href="https://jieniyimiao.blog.csdn.net/article/details/44569337?spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-12-44569337-blog-102863044.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-12-44569337-blog-102863044.pc_relevant_default&amp;utm_relevant_index=13">https://jieniyimiao.blog.csdn.net/article/details/44569337?spm=1001.2101.3001.6650.12&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-12-44569337-blog-102863044.pc_relevant_default&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-12-44569337-blog-102863044.pc_relevant_default&amp;utm_relevant_index=13</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikibooks.org/wiki/OpenGL_Programming/Installation/Linux">https://en.wikibooks.org/wiki/OpenGL_Programming/Installation/Linux</a></p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0 License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/">http://chemlzh.github.io/2022/11/17/Gaussian-installation-tutorial/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2022/11/17/NMR-spectroscopy-under-the-perspective-of-quantum-mechanics-I/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2022/11/17/RDC-data-processing-tutorial/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Clemmensen's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        chemlzh@pku.edu.cn
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2022/11/">十一月 2022<span class="sidebar_archives-count">6</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/nuclear-magnetic-spectroscopy/">核磁共振波谱<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/networking/">网络技术<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/computational-chemistry/">计算化学<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="tags">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_circle</i>
+                
+                tags
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/chemlzh" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;克莱门森的实验室
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
