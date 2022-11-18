@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            搭建GitHub主页的常见问题 | 
+        
+        克莱门森的实验室
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content=",GitHub,Hexo,Node.js,Material主题">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="克莱门森的实验室">
+    <meta name="msapplication-starturl" content="http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="克莱门森的实验室">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="搭建GitHub主页的常见问题 | 克莱门森的实验室">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    <meta property="og:article:tag" content="GitHub"> <meta property="og:article:tag" content="Hexo"> <meta property="og:article:tag" content="Node.js"> <meta property="og:article:tag" content="Material主题"> 
+
+    
+        <meta property="article:published_time" content="Fri Nov 18 2022 07:59:59 GMT+0800">
+        <meta property="article:modified_time" content="Fri Nov 18 2022 15:24:46 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/index.html",
+    "headline": "搭建GitHub主页的常见问题",
+    "datePublished": "Fri Nov 18 2022 07:59:59 GMT+0800",
+    "dateModified": "Fri Nov 18 2022 15:24:46 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Clemmensen",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "克莱门森的实验室",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",GitHub,Hexo,Node.js,Material主题",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GitHub%E9%83%A8%E5%88%86"><span class="post-toc-number">1.</span> <span class="post-toc-text">GitHub部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-hexo-d%E9%83%A8%E7%BD%B2%E6%97%B6%E4%B8%80%E7%9B%B4%E5%87%BA%E7%8E%B0%E2%80%9Cconnection-reset%E2%80%9D%E6%88%96%E2%80%9Cconnection-redirected-%E2%80%9D%E9%94%99%E8%AF%AF%EF%BC%8C%E5%AF%BC%E8%87%B4%E7%94%9F%E6%88%90%E7%9A%84%E7%BD%91%E9%A1%B5%E4%B8%80%E7%9B%B4%E9%83%A8%E7%BD%B2%E4%B8%8D%E4%B8%8A%E5%8E%BB"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. hexo d部署时一直出现“connection reset”或“connection redirected(?)”错误，导致生成的网页一直部署不上去</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Node-js%E4%B8%8EHexo%E9%83%A8%E5%88%86"><span class="post-toc-number">2.</span> <span class="post-toc-text">Node.js与Hexo部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-%E6%88%91%E6%8C%89%E7%85%A7%E7%BD%91%E4%B8%8A%E7%9A%84%E6%95%99%E7%A8%8B%EF%BC%8C%E6%8A%8ANode-js%E6%BA%90%E6%8D%A2%E6%88%90%E9%98%BF%E9%87%8C%E6%BA%90%E4%BA%86%EF%BC%8C%E5%8F%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E6%98%AF%E6%B2%A1%E6%B3%95%E9%A1%BA%E5%88%A9%E4%B8%8B%E8%BD%BDhexo%E5%8C%85%E5%91%A2"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1. 我按照网上的教程，把Node.js源换成阿里源了，可为什么还是没法顺利下载hexo包呢</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E7%9C%8B%E6%96%B0%E7%9A%84%E9%98%BF%E9%87%8C%E6%BA%90%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8cnpm%EF%BC%8C%E8%BF%99%E4%B8%AAcnpm%E4%B8%8E%E5%8E%9F%E6%9D%A5%E7%9A%84npm%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2. 看新的阿里源推荐使用cnpm，这个cnpm与原来的npm有什么关系？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E5%AE%89%E8%A3%85%E5%AE%8Chexo-cli%E5%90%8E%EF%BC%8C%E6%89%A7%E8%A1%8Chexo-init%E4%BB%8D%E7%84%B6%E6%8A%A5%E9%94%99%EF%BC%8C%E8%AF%B4%E6%89%BE%E4%B8%8D%E5%88%B0%E2%80%9Chexo%E2%80%9D%E5%91%BD%E4%BB%A4%EF%BC%9F"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3. 为什么在安装完hexo-cli后，执行hexo init仍然报错，说找不到“hexo”命令？</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Material%E4%B8%BB%E9%A2%98%E9%83%A8%E5%88%86"><span class="post-toc-number">3.</span> <span class="post-toc-text">Material主题部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-hexo-g%E7%94%9F%E6%88%90%E6%9C%AC%E5%9C%B0%E7%BD%91%E9%A1%B5%E5%87%BA%E9%94%99%EF%BC%8C%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF%E4%B8%AD%E5%90%AB%E6%9C%89%E2%80%9CCannot-read-property-%E2%80%98startsWith%E2%80%99-of-null%E2%80%9D%E3%80%81%E2%80%9Cdnsprefetch%E2%80%9D%E7%AD%89%E5%AD%97%E7%9C%BC%EF%BC%8Chexo-clean%E4%BB%A5%E5%90%8E%E9%94%99%E8%AF%AF%E4%BB%8D%E7%84%B6%E5%AD%98%E5%9C%A8"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1. hexo g生成本地网页出错，错误信息中含有“Cannot read property ‘startsWith’ of null”、“dnsprefetch”等字眼，hexo clean以后错误仍然存在</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-%E2%80%A6%E2%80%A6"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2. ……</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/thumbnail.png)">
+    
+            <p class="article-headline-p">
+                搭建GitHub主页的常见问题
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Clemmensen</strong>
+        <span>11月 18, 2022</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/hexo-theme-material/" rel="tag">Material主题</a></li><li class="mdl-menu__item"><a class="post_tag-none-link" href="/tags/nodejs/" rel="tag">Node.js</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=搭建GitHub主页的常见问题&url=http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/index.html&pic=http://chemlzh.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=搭建GitHub主页的常见问题&url=http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/index.html&via=Clemmensen" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>笔者在亲手搭建GitHub主页时，时常遇到一些奇怪的故障，这些故障或是由插件或网页主题的代码错误引起，或是由于不可言说的网络问题所致，现将目前为止遇到的较为棘手的故障，以及对应的解决方案，一并汇总在这篇文章中，供以后采用Hexo搭建博客时参考。</p>
+<h3 id="GitHub部分"><a href="#GitHub部分" class="headerlink" title="GitHub部分"></a>GitHub部分</h3><h4 id="1-hexo-d部署时一直出现“connection-reset”或“connection-redirected-”错误，导致生成的网页一直部署不上去"><a href="#1-hexo-d部署时一直出现“connection-reset”或“connection-redirected-”错误，导致生成的网页一直部署不上去" class="headerlink" title="1. hexo d部署时一直出现“connection reset”或“connection redirected(?)”错误，导致生成的网页一直部署不上去"></a>1. hexo d部署时一直出现“connection reset”或“connection redirected(?)”错误，导致生成的网页一直部署不上去</h4><p><strong>问题描述</strong></p>
+<p>在git bash界面中（当前路径在博客根目录），输入hexo d并运行，弹出类似于下面的错误信息：</p>
+<p>……</p>
+<p>尝试了……提供的解决方案，没有效果，怀疑是网络连接问题。为验证部署错误是否由网络连接引起，在git bash界面中输入“ssh -T git@github.com”并运行，弹出下列错误提示</p>
+<p>……</p>
+<p><strong>解决方案</strong></p>
+<p>……</p>
+<p><strong>参考资料</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/QianQiYing/article/details/104999948?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-104999948-blog-103767426.pc_relevant_3mothn_strategy_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-104999948-blog-103767426.pc_relevant_3mothn_strategy_recovery&amp;utm_relevant_index=4">reset by 192.30.255.112 port 22；connect to host github.com port 22: Connection timed out——解决问题的过程记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37754830/article/details/122606405?spm=1001.2101.3001.6650.9&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-122606405-blog-104999948.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9-122606405-blog-104999948.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=9">ssh: connect to host github.com port 22 修改端口不起效情况下的解决方法</a></p>
+<h3 id="Node-js与Hexo部分"><a href="#Node-js与Hexo部分" class="headerlink" title="Node.js与Hexo部分"></a>Node.js与Hexo部分</h3><h4 id="1-我按照网上的教程，把Node-js源换成阿里源了，可为什么还是没法顺利下载hexo包呢"><a href="#1-我按照网上的教程，把Node-js源换成阿里源了，可为什么还是没法顺利下载hexo包呢" class="headerlink" title="1. 我按照网上的教程，把Node.js源换成阿里源了，可为什么还是没法顺利下载hexo包呢"></a>1. 我按照网上的教程，把Node.js源换成阿里源了，可为什么还是没法顺利下载hexo包呢</h4><p>目前网上的换源教程，都会推荐使用国内的阿里源，这样可以避免由大防火墙带来的下载中断等问题。但要注意的是，自2022年5月底开始，原阿里npm源域名<a target="_blank" rel="noopener" href="http://npm.taobao.org">http://npm.taobao.org</a>和<a href="registry.npm.taobao.org">registry.npm.taobao.org</a>停止使用，启用的新域名分别为<a target="_blank" rel="noopener" href="http://npmmirror.com">http://npmmirror.com</a>和<a href="registry.npmmirror.com">registry.npmmirror.com</a>。而绝大部分教程（如<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/09e98b1072dc">这篇</a>）都是在2022年5月前发布的，且发布后没有及时更新，因此提供的阿里源网址仍是老网址，使用后有可能提示无法访问或下载npm包。</p>
+<p><strong>解决方案</strong></p>
+<p>在命令行终端输入下列命令并运行，将npm源替换为新的阿里源</p>
+<pre><code class="lang-bash">npm config set registry https://registry.npmmirror.com
+</code></pre>
+<p><strong>参考资料</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/09e98b1072dc">npm install报错ERR! code ETIMEDOUT的解决办法</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465424728">【公告】淘宝 npm 域名即将切换 &amp;&amp; npmmirror 重构升级 &amp;&amp; 微信交流群</a></p>
+<h4 id="2-看新的阿里源推荐使用cnpm，这个cnpm与原来的npm有什么关系？"><a href="#2-看新的阿里源推荐使用cnpm，这个cnpm与原来的npm有什么关系？" class="headerlink" title="2. 看新的阿里源推荐使用cnpm，这个cnpm与原来的npm有什么关系？"></a>2. 看新的阿里源推荐使用cnpm，这个cnpm与原来的npm有什么关系？</h4><p>……</p>
+<h4 id="3-为什么在安装完hexo-cli后，执行hexo-init仍然报错，说找不到“hexo”命令？"><a href="#3-为什么在安装完hexo-cli后，执行hexo-init仍然报错，说找不到“hexo”命令？" class="headerlink" title="3. 为什么在安装完hexo-cli后，执行hexo init仍然报错，说找不到“hexo”命令？"></a>3. 为什么在安装完hexo-cli后，执行hexo init仍然报错，说找不到“hexo”命令？</h4><p>……</p>
+<h3 id="Material主题部分"><a href="#Material主题部分" class="headerlink" title="Material主题部分"></a>Material主题部分</h3><h4 id="1-hexo-g生成本地网页出错，错误信息中含有“Cannot-read-property-‘startsWith’-of-null”、“dnsprefetch”等字眼，hexo-clean以后错误仍然存在"><a href="#1-hexo-g生成本地网页出错，错误信息中含有“Cannot-read-property-‘startsWith’-of-null”、“dnsprefetch”等字眼，hexo-clean以后错误仍然存在" class="headerlink" title="1. hexo g生成本地网页出错，错误信息中含有“Cannot read property ‘startsWith’ of null”、“dnsprefetch”等字眼，hexo clean以后错误仍然存在"></a>1. hexo g生成本地网页出错，错误信息中含有“Cannot read property ‘startsWith’ of null”、“dnsprefetch”等字眼，hexo clean以后错误仍然存在</h4><p>根据<a target="_blank" rel="noopener" href="https://easyhexo.com/">EasyHexo</a>的安装指南，如果下载安装的是hexo-theme-material 1.5.2，应该不会出现这一错误。因此可以肯定的是，该错误主要出现在hexo-theme-material 1.5.5及更新版本。</p>
+<p>从hexo-theme-material的Issue #709可知，该错误来自于dnsprefetch.ejs的第21行：</p>
+<pre><code class="lang-javascript">&lt;% &#125; else if(theme.comment.use.startsWith(&quot;disqus&quot;)) &#123; %&gt;
+</code></pre>
+<p>这一部分原本作用是调用disqus评论服务，但在版本更迭的过程中，作者似乎忘记了theme.comment.use可能没有初始化（或等于null），因此没有加一条“是否开启（特定的）博客评论服务”的判断语句，导致……</p>
+<p><strong>解决方案</strong></p>
+<p>a) 如果对Material主题包的版本不介意的话，安装旧版本的Material主题包即可解决问题。旧版本的Material主题包在<a target="_blank" rel="noopener" href="https://github.com/iblh/hexo-theme-material/releases">Material Releases</a>中，下拉找到1.5.2版，下载后按照教程安装即可。</p>
+<p>b) 如果执意采用高于1.5.2的Material主题包，解决方案则是直接修改dnsprefetch.ejs的出错语句。假设Material主题包放在了博客的themes文件夹下，名字叫hexo-theme-material，则dnsprefetch.ejs应该位于/(your_blog_name)/themes/hexo-theme-material/layout/_widget。找到dnsprefetch.ejs，用记事本（或VSCode）打开，定位到第21行（查找“startsWith”也能定位到该语句），将其改为：</p>
+<pre><code class="lang-javascript">&lt;% &#125; else if(theme.comment.use &amp;&amp; theme.comment.use.startsWith(&quot;disqus&quot;)) &#123; %&gt;
+</code></pre>
+<p>保存后在博客根目录下启动git bash，输入hexo clean后运行，再输入hexo g重新生成，这样便能解决上述错误。</p>
+<p><strong>参考资料</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/iblh/hexo-theme-material/issues/709">hexo g出错 hexo clean以后无效 按照hexo文档进行的操作 （Issue #709）</a></p>
+<h4 id="2-……"><a href="#2-……" class="headerlink" title="2. ……"></a>2. ……</h4>
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0 License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/">http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Clemmensen's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        chemlzh@pku.edu.cn
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2022/11/">十一月 2022<span class="sidebar_archives-count">6</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/nuclear-magnetic-spectroscopy/">核磁共振波谱<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/networking/">网络技术<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/computational-chemistry/">计算化学<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="tags">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_circle</i>
+                
+                tags
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/chemlzh" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;克莱门森的实验室
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+    
+</html>
