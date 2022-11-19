@@ -25,6 +25,8 @@
 
 
 
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
 
 
 
@@ -46,7 +48,7 @@
     
     <title>
         
-            基于Hexo框架的GitHub主页搭建教程 | 
+            基于Hexo框架的GitHub个人主页搭建教程 | 
         
         克莱门森的实验室
     </title>
@@ -170,12 +172,7 @@
 
     <style>
       body{
-        background-color: #F5F5F5;
-      }
-
-      /* blog_info bottom background */
-      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
-        background-color: #fff;
+        background-image: url(/img/bg.png);
       }
     </style>
 
@@ -240,14 +237,14 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://chemlzh.github.io/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="基于Hexo框架的GitHub主页搭建教程 | 克莱门森的实验室">
+    <meta property="og:title" content="基于Hexo框架的GitHub个人主页搭建教程 | 克莱门森的实验室">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     <meta property="og:article:tag" content="GitHub"> <meta property="og:article:tag" content="Hexo"> <meta property="og:article:tag" content="Node.js"> <meta property="og:article:tag" content="Material主题"> 
 
     
         <meta property="article:published_time" content="Fri Nov 18 2022 07:58:35 GMT+0800">
-        <meta property="article:modified_time" content="Fri Nov 18 2022 23:44:12 GMT+0800">
+        <meta property="article:modified_time" content="Sun Nov 20 2022 00:10:15 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -268,9 +265,9 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "mainEntityOfPage": "http://chemlzh.github.io/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/index.html",
-    "headline": "基于Hexo框架的GitHub主页搭建教程",
+    "headline": "基于Hexo框架的GitHub个人主页搭建教程",
     "datePublished": "Fri Nov 18 2022 07:58:35 GMT+0800",
-    "dateModified": "Fri Nov 18 2022 23:44:12 GMT+0800",
+    "dateModified": "Sun Nov 20 2022 00:10:15 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Clemmensen",
@@ -354,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Part-0-Git%E6%98%AF%E5%95%A5%EF%BC%9FGitHub%E5%8F%88%E6%98%AF%E5%95%A5%EF%BC%9F%E4%B8%BA%E5%95%A5%E8%A6%81%E7%94%A8GitHub%E5%81%9A%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%EF%BC%9F"><span class="post-toc-number">1.</span> <span class="post-toc-text">Part 0. Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Part-I-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87%EF%BC%9AGitHub%E8%B4%A6%E5%8F%B7%E7%9A%84%E7%94%B3%E8%AF%B7%EF%BC%8CGitHub%E4%B8%BB%E9%A1%B5%E4%BB%93%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%9C%AC%E5%9C%B0Git%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="post-toc-number">2.</span> <span class="post-toc-text">Part I. 前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Part-II-Node-js%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%8C%E4%BB%A5%E5%8F%8AHexo%E6%A1%86%E6%9E%B6%E7%9A%84%E5%88%9D%E6%AD%A5%E6%90%AD%E5%BB%BA"><span class="post-toc-number">3.</span> <span class="post-toc-text">Part II. Node.js环境的安装，以及Hexo框架的初步搭建</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Part-III-%E5%B0%86Material%E4%B8%BB%E9%A2%98%E5%BA%94%E7%94%A8%E5%88%B0GitHub%E4%B8%BB%E9%A1%B5"><span class="post-toc-number">4.</span> <span class="post-toc-text">Part III. 将Material主题应用到GitHub主页</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Part-IV-%E9%83%A8%E5%88%86%E5%AE%9E%E7%94%A8%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="post-toc-number">5.</span> <span class="post-toc-text">Part IV. 部分实用插件的安装与配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-0-Git%E6%98%AF%E5%95%A5%EF%BC%9FGitHub%E5%8F%88%E6%98%AF%E5%95%A5%EF%BC%9F%E4%B8%BA%E5%95%A5%E8%A6%81%E7%94%A8GitHub%E5%81%9A%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%EF%BC%9F"><span class="post-toc-number">1.</span> <span class="post-toc-text">Part 0. Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-I-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87%EF%BC%9AGitHub%E8%B4%A6%E5%8F%B7%E7%9A%84%E7%94%B3%E8%AF%B7%EF%BC%8CGitHub%E4%B8%BB%E9%A1%B5%E4%BB%93%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%9C%AC%E5%9C%B0Git%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="post-toc-number">2.</span> <span class="post-toc-text">Part I. 前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B3%A8%E5%86%8C%E4%B8%AA%E4%BA%BAGitHub%E8%B4%A6%E5%8F%B7%EF%BC%8C%E5%9C%A8%E5%85%B6%E4%B8%AD%E5%88%9B%E5%BB%BAGitHub%E4%B8%BB%E9%A1%B5%E5%AF%B9%E5%BA%94%E7%9A%84%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">注册个人GitHub账号，在其中创建GitHub主页对应的代码仓库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9C%A8%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Git%EF%BC%8C%E5%B9%B6%E4%BB%A5SSH%E6%96%B9%E5%BC%8F%E5%85%B3%E8%81%94%E6%9C%AC%E5%9C%B0Git%E4%B8%8EGitHub"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">在本地环境安装Git，并以SSH方式关联本地Git与GitHub</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-II-Node-js%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%8C%E4%BB%A5%E5%8F%8AHexo%E6%A1%86%E6%9E%B6%E7%9A%84%E5%88%9D%E6%AD%A5%E6%90%AD%E5%BB%BA"><span class="post-toc-number">3.</span> <span class="post-toc-text">Part II. Node.js环境的安装，以及Hexo框架的初步搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9C%A8Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Node-js%EF%BC%8C%E5%B9%B6%E8%AE%BE%E7%BD%AE%E5%9B%BD%E5%86%85%E6%9B%B4%E6%96%B0%E6%BA%90"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">在Windows系统安装Node.js，并设置国内更新源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%9C%A8%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2Hexo%E6%A1%86%E6%9E%B6%EF%BC%8C%E7%94%9F%E6%88%90%E5%88%9D%E5%A7%8BGitHub%E4%B8%BB%E9%A1%B5"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">在本地部署Hexo框架，生成初始GitHub主页</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-III-%E5%B0%86Material%E4%B8%BB%E9%A2%98%E5%BA%94%E7%94%A8%E5%88%B0GitHub%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5"><span class="post-toc-number">4.</span> <span class="post-toc-text">Part III. 将Material主题应用到GitHub个人主页</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E9%87%87%E7%94%A8Hexo%E7%9A%84%E9%BB%98%E8%AE%A4%E4%B8%BB%E9%A2%98%EF%BC%8C%E8%80%8C%E9%87%87%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98%EF%BC%9F"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">为什么不采用Hexo的默认主题，而采用自定义主题？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0Material%E4%B8%BB%E9%A2%98"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">如何添加Material主题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%A7%81%E8%B4%A7%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9%E4%BA%86Material%E4%B8%BB%E9%A2%98%EF%BC%9F"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">私货：为什么选择了Material主题？</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-IV-%E4%B8%BAGitHub%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E3%80%81%E5%88%86%E7%B1%BB%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="post-toc-number">5.</span> <span class="post-toc-text">Part IV. 为GitHub个人主页添加文章、分类与标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-V-%E9%83%A8%E5%88%86%E5%AE%9E%E7%94%A8%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="post-toc-number">6.</span> <span class="post-toc-text">Part V. 部分实用插件的安装与配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%8F%92%E4%BB%B6%EF%BC%9Ahexo-renderer-mathjax"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">数学公式插件：hexo-renderer-mathjax</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%BA%E4%BD%A0%E7%9A%84%E6%96%87%E7%AB%A0%E9%85%8D%E4%B8%8A%E9%A2%98%E5%9B%BE%E3%80%81%E6%8F%92%E5%9B%BE%E4%B8%8E%E7%AB%99%E5%86%85%E8%B6%85%E9%93%BE%E6%8E%A5%EF%BC%9Ahexo-asset-image%E4%B8%8Ehexo-asset-link"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">为你的文章配上题图、插图与站内超链接：hexo-asset-image与hexo-asset-link</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Part-VI-%E5%B0%86%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%88%90%E7%9A%84%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2%E5%88%B0GitHub"><span class="post-toc-number">7.</span> <span class="post-toc-text">Part VI. 将本地生成的网页部署到GitHub</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="post-toc-number">8.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
     </ul>
     
 
@@ -377,7 +374,7 @@
         <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/thumbnail.png)">
     
             <p class="article-headline-p">
-                基于Hexo框架的GitHub主页搭建教程
+                基于Hexo框架的GitHub个人主页搭建教程
             </p>
         </div>
 
@@ -434,10 +431,21 @@
     
 
     
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=基于Hexo框架的GitHub主页搭建教程&url=http://chemlzh.github.io/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/index.html&pic=http://chemlzh.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=基于Hexo框架的GitHub个人主页搭建教程&url=http://chemlzh.github.io/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/index.html&pic=http://chemlzh.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -446,7 +454,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=基于Hexo框架的GitHub主页搭建教程&url=http://chemlzh.github.io/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/index.html&via=Clemmensen" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=基于Hexo框架的GitHub个人主页搭建教程&url=http://chemlzh.github.io/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/index.html&via=Clemmensen" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -491,41 +499,86 @@
     
         <p>一年前的暑假，笔者曾经对照着网上的教程，试着弄一个专属于自己的GitHub主页，但由于笔者对具体的技术细节不太熟悉，加之时间不太充裕，写作灵感又极其匮乏，于是套了个Material主题后就不了了之。</p>
 <p>最近适逢疫情严峻，笔者无法顺利开展实验，于是决定重拾计算机的“老本行”，钻研一下如何搭建自己的GitHub主页。经过这一两天的努力，笔者终于完成了GitHub个人主页的搭建，接下来只需要对博客进行小修小补，并搞清楚版本管理与部署即可。</p>
-<p>也许有人会问，按你的说法，用Hexo搭建GitHub主页，只需要一天搭框架，一天修故障，不是易如反掌的事？但换个角度想，笔者毕竟没有按部就班照着一份系统的教程来建主页，而是把网上的资料东拼西凑，才勉强搭了一个能用的，其中踩过的坑和绕过的远路，只有自己知晓。为了避免今后再费周折，笔者决定写下这篇教程，既是给自己准备一份建站的参考资料，也可以用来帮助其他初涉Hexo，希望用它搭建博客的爱好者。</p>
+<p>也许有人会问，按你的说法，用Hexo搭建GitHub个人主页，只需要一天搭框架，一天修故障，不是易如反掌的事？但换个角度想，笔者毕竟没有按部就班照着一份系统的教程来建主页，而是把网上的资料东拼西凑，才勉强搭了一个能用的，其中踩过的坑和绕过的远路，只有自己知晓。为了避免今后再费周折，笔者决定写下这篇教程，既是给自己准备一份建站的参考资料，也可以用来帮助其他初涉Hexo，希望用它搭建博客的爱好者。</p>
 <p>既然这样，那……就开始了？</p>
-<h4 id="Part-0-Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？"><a href="#Part-0-Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？" class="headerlink" title="Part 0. Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？"></a>Part 0. Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？</h4><p>Git是一款基于快照（snapshot-based）的分布式版本控制（distributed version control）工具。“基于快照”意味着，当一个用户用Git更新文件（如一段代码）时，Git不会为每个文件保存一个版本，而是先计算文件的哈希码，并与之前的版本比较，如果哈希码相同，Git便会记下一个链接，这个链接指向上一个版本储存的文件，如果哈希码不同，Git则会创建一个快照，并保存这个快照的索引，如图1所示。</p>
+<h3 id="Part-0-Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？"><a href="#Part-0-Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？" class="headerlink" title="Part 0. Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？"></a>Part 0. Git是啥？GitHub又是啥？为啥要用GitHub做个人主页？</h3><p>Git是一款基于快照（snapshot-based）的分布式版本控制（distributed version control）工具。“基于快照”意味着，当一个用户用Git更新文件（如一段代码）时，Git不会为每个文件保存一个版本，而是先计算文件的哈希码，并与之前的版本比较，如果哈希码相同，Git便会记下一个链接，这个链接指向上一个版本储存的文件，如果哈希码不同，Git则会创建一个快照，并保存这个快照的索引，如图0.1所示。</p>
 <center class="half">
-<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig1.png" style="zoom: 60%;">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig0_1.png" style="zoom: 60%;">
 </center>
-<center><strong>图1</strong>    Git的“基于快照”的版本控制思路</center>
+<center><strong>图0.1</strong>    Git的“基于快照”的版本控制思路</center>
 
-<p>而“分布式”意味着，任何一个开发者，都可以在自己的电脑上，存储自己编辑的当前版本的文件，以及这些文件从创建，到每一次修改，最后变成现在的本地存储版本的过程。这样，即使开发者与（存储主干版本的）公共服务器断开连接，开发者仍然能用自己的电脑，对文件进行增删与修改，并且在本地提交版本更新，等到与公共服务器重连后，再提交pull request，然后与主干版本合并，从而大大提高了开发效率（见图2）。</p>
+<p>而“分布式”意味着，任何一个开发者，都可以在自己的电脑上，存储自己编辑的当前版本的文件，以及这些文件从创建，到每一次修改，最后变成现在的本地存储版本的过程。这样，即使开发者与（存储主干版本的）公共服务器断开连接，开发者仍然能用自己的电脑，对文件进行增删与修改，并且在本地提交版本更新，等到与公共服务器重连后，再提交pull request，然后与主干版本合并，从而大大提高了开发效率（见图0.2）。</p>
 <center class="half">
-<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig2.png" style="zoom: 60%;">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig0_2.png" style="zoom: 60%;">
 </center>
-<center><strong>图2</strong>    Git的“分布式”存储思路</center>
+<center><strong>图0.2</strong>    Git的“分布式”存储思路</center>
 
 <p>虽然Git是分布式版本控制工具，但正如前面提到的那样，为了保证有一个稳定的主干版本，供不同的开发者下载与修改，必须要设立一台公共服务器，用以存储主干版本的文件。这台公共服务器，既可以由开发者亲自组装搭建，也可以来自于具有代码托管能力的商业公司（即Git server as a service），而GitHub便是其中历史悠久（2008年创立），规模最大（超过8千万的用户，超过2亿的代码仓库，其中开放仓库近3千万），也是最富盛名的Git服务平台，其简洁易用的界面、丰富的代码资源、友好的社区氛围，为搭建个人网站提供了极大的便利。</p>
 <p>也许稍微懂行一点的朋友会问：为什么你这么推荐GitHub，而不推荐GitLab或Gitee呢？毕竟，如果不更换DNS，也不用校园网，GitHub很容易因为网络问题，无法拉取或上传代码，导致个人网页难以持续更新，而用GitLab或Gitee，则大概率可以避免这些问题。不错，GitHub确实有网络不畅的痛点（这个在之后的<a href="/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page">疑难解答</a>中也会提及），然而把GitLab或Gitee当GitHub的代餐，遇到棘手问题的概率更大，找不到解决方案的概率也更大，因为互联网环境下，讨论GitHub使用方法的帖子和文章，远比讨论GitLab或Gitee的要多。</p>
 <p>此外，像Gitee之类的国内Git服务平台，还存在两个头疼的问题：其一，这些平台更多面向国内用户，国际市场开拓不大，若决定常驻这些平台，便会错过许多来自国外开发者的优质代码，以及与这些国外开发者沟通交流，切磋技艺的机会；其二，向Gitee等国内平台提交代码后，由于平台的自我审核机制，这些代码基本上不能第一时间上传并展示在平台网站上，这就导致若是提交软件源码，其他用户并不能立即享受新版本软件的便利，若是提交个人博客的文章，其他用户也不能第一时间关注。鉴于这两点，笔者建议，<strong>如果GitHub能正常登陆，且能正常拉取/提交代码，仍应将GitHub作为代码仓库与个人网页的首选。</strong></p>
-<h4 id="Part-I-前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置"><a href="#Part-I-前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置" class="headerlink" title="Part I. 前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置"></a>Part I. 前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置</h4><p>为了建立GitHub主页，首先我们要创建一个GitHub账号，并在这个账号中创建一个代码仓库，用于存储发布在GitHub主页的文章，以及运行GitHub主页所需要的代码。……</p>
-<h4 id="Part-II-Node-js环境的安装，以及Hexo框架的初步搭建"><a href="#Part-II-Node-js环境的安装，以及Hexo框架的初步搭建" class="headerlink" title="Part II. Node.js环境的安装，以及Hexo框架的初步搭建"></a>Part II. Node.js环境的安装，以及Hexo框架的初步搭建</h4><p>建立好GitHub主页仓库，并在本地配置好Git环境后，我们就可以依次安装Node.js和Hexo框架了。考虑到笔者主要在Windows上撰写博客文章，故以Windows环境为例，介绍Node.js和Hexo的安装流程，其他系统（如Mac OS X和Linux）的安装流程，可以参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo中文文档</a>，这里暂不展开论述。</p>
-<p>访问<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js官方网站</a>（如果无法访问，可以访问<a target="_blank" rel="noopener" href="https://npmmirror.com/mirrors/node/">npmmirror中国镜像站的Node.js镜像</a>），在“Windows Installer”一行，根据系统的位数点选（一般选64位下载，如图3所示），浏览器就会将对应位数的Node.js安装包下载到本地。</p>
+<h3 id="Part-I-前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置"><a href="#Part-I-前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置" class="headerlink" title="Part I. 前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置"></a>Part I. 前期准备：GitHub账号的申请，GitHub主页仓库的创建，以及本地Git环境的配置</h3><h4 id="注册个人GitHub账号，在其中创建GitHub主页对应的代码仓库"><a href="#注册个人GitHub账号，在其中创建GitHub主页对应的代码仓库" class="headerlink" title="注册个人GitHub账号，在其中创建GitHub主页对应的代码仓库"></a>注册个人GitHub账号，在其中创建GitHub主页对应的代码仓库</h4><p>为了建立GitHub主页，首先我们要创建一个GitHub账号，并在这个账号中创建一个代码仓库，用于存储发布在GitHub主页的文章，以及运行GitHub主页所需要的代码。为此，我们在浏览器中访问<a href="GitHub.com">GitHub.com</a>，这将弹出图1.1所示的界面，点击右上角的“Sign up”按钮，GitHub将会自动跳转到注册页面。</p>
 <center class="half">
-<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig3.png" style="zoom: 60%;">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig1_1.png" style="zoom: 40%;">
 </center>
-<center><strong>图3</strong>    Node.js官方网站的下载页面，Windows用户通常点选64位安装包即可</center>
+<center><strong>图1.1</strong>    GitHub首页界面，注册按钮用红框标出</center>
+
+<p>注册页面会提示输入邮箱，一般用自己经常使用的邮箱（学校邮箱、网易邮箱、QQ邮箱皆可）。</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig1_2.png" style="zoom: 40%;">
+</center>
+<center><strong>图1.2</strong>    GitHub注册界面，提示你输入邮箱</center>
+
+<p>之后依次输入用户名和账号密码，点击确认，GitHub会发送认证邮件，我们只需打开邮箱，进入认证邮件，点击认证链接，即可完成注册。</p>
+<p>注册后，我们登录GitHub账号，进入用户界面，点击右上角的加号（在你的缩略头像左侧），会弹出一个下拉菜单，点击“New repository”，就会转到代码仓库的创建页面，如图1.3所示。</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig1_3.png" style="zoom: 40%;">
+</center>
+<center><strong>图1.3</strong>    从GitHub用户界面创建代码仓库（<del>对不起我是二次元</del>）</center>
+
+<p>我们给即将创建的代码仓库，命名为<code>(your_username).github.io</code>，此处的<code>(your_username)</code>应与当前登录的GitHub账号名称（不是昵称！）相同，此外，还要保证这个代码仓库勾选的是“Public”而非“Private”，这样其他人才能访问你的界面。确保选项无误后，点击下方的绿色按钮“Create repository”，GitHub就会生成GitHub主页对应的代码仓库。</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig1_4.png" style="zoom: 75%;">
+</center>
+<center><strong>图1.4</strong>    把即将创建的代码仓库命名为<code>(your_username).github.io</code>，注意到命名区为红色，表明同名仓库已被创建</center>
+
+<h4 id="在本地环境安装Git，并以SSH方式关联本地Git与GitHub"><a href="#在本地环境安装Git，并以SSH方式关联本地Git与GitHub" class="headerlink" title="在本地环境安装Git，并以SSH方式关联本地Git与GitHub"></a>在本地环境安装Git，并以SSH方式关联本地Git与GitHub</h4><p>根据Part 0的描述可知，仅仅在GitHub申请账号和建立代码仓库，而没有建立本地的Git环境，或是建立了Git环境，却没有将其与GitHub关联，仍然不能把博客页面上传到GitHub部署。因此，我们要做的下一步工作，就是在本地计算机上安装Git，然后在Git bash中登陆自己的GitHub账号，最后配置SSH公钥，便于之后拉取或上传代码时，以SSH方式关联本地Git与GitHub。</p>
+<p>Git的官方网站是<a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a>，进入页面后会有一个大大的“Downloads”，点进去就会跳转到下载界面。</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig1_5.png" style="zoom: 40%;">
+</center>
+<center><strong>图1.5</strong>    Git的官方网站，已标出下载入口</center>
+
+<p>考虑到我们是在Windows下更新GitHub个人主页，这里我们直接点“Windows”，下载适用于Windows系统的Git套件。</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig1_6.png" style="zoom: 40%;">
+</center>
+<center><strong>图1.6</strong>    Git的下载界面，Windows用户点选“Windows”即可</center>
+
+<p>下载完毕后，双击安装包运行，勾选“同意使用协议”，之后选项全部默认，一路点击Next，等待安装程序执行完毕后，点击“Finish”完成安装。</p>
+<p>通常情况下，Git套件安装后便能立即使用，如果不放心，可以在命令行中输入<code>git --version</code>并执行，若弹出<code>git version ×.×.×.windows.×</code>，且与安装包对应版本一致，便说明Git组件安装成功。</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig1_7.png" style="zoom: 120%;">
+</center>
+<center><strong>图1.7</strong>    验证Git是否安装成功</center>
+
+<p>……</p>
+<h3 id="Part-II-Node-js环境的安装，以及Hexo框架的初步搭建"><a href="#Part-II-Node-js环境的安装，以及Hexo框架的初步搭建" class="headerlink" title="Part II. Node.js环境的安装，以及Hexo框架的初步搭建"></a>Part II. Node.js环境的安装，以及Hexo框架的初步搭建</h3><h4 id="在Windows系统安装Node-js，并设置国内更新源"><a href="#在Windows系统安装Node-js，并设置国内更新源" class="headerlink" title="在Windows系统安装Node.js，并设置国内更新源"></a>在Windows系统安装Node.js，并设置国内更新源</h4><p>建立好GitHub主页仓库，并在本地配置好Git环境后，我们就可以依次安装Node.js和Hexo框架了。考虑到笔者主要在Windows上撰写博客文章，故以Windows环境为例，介绍Node.js和Hexo的安装流程，其他系统（如Mac OS X和Linux）的安装流程，可以参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo中文文档</a>，这里暂不展开论述。</p>
+<p>访问<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js官方网站</a>（如果无法访问，可以访问<a target="_blank" rel="noopener" href="https://npmmirror.com/mirrors/node/">npmmirror中国镜像站的Node.js镜像</a>），在“Windows Installer”一行，根据系统的位数点选（一般选64位下载，如图2.1所示），浏览器就会将对应位数的Node.js安装包下载到本地。</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig2_1.png" style="zoom: 60%;">
+</center>
+<center><strong>图2.1</strong>    Node.js官方网站的下载页面，Windows用户通常点选64位安装包即可</center>
 
 <p>双击安装包运行，勾选“同意使用协议”，之后选项全部默认，一路点击Next，等待安装程序执行完毕后，点击“Finish”完成安装。</p>
 <p>为确保Node.js的所有组件均已正常安装，我们要打开命令提示符（Windows Powershell或Windows Terminal亦可），分别输入如下命令并运行：</p>
 <pre><code class="lang-bash">node -v
 npm -v
 </code></pre>
-<p>如果分别跳出安装包对应的版本号（如图4所示），说明Node.js成功安装，否则应卸载Node.js，重新运行安装包进行安装。</p>
+<p>如果分别跳出安装包对应的版本号（如图2.2所示），说明Node.js成功安装，否则应卸载Node.js，重新运行安装包进行安装。</p>
 <center class="half">
-<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig4.png" style="zoom: 120%;">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig2_2.png" style="zoom: 120%;">
 </center>
-<center><strong>图4</strong>    成功安装Node.js后，查询node和npm的版本号，会得到与安装包一致的结果</center>
+<center><strong>图2.2</strong>    成功安装Node.js后，查询node和npm的版本号，会得到与安装包一致的结果</center>
 
 <p>考虑到国内与Node.js软件包服务器的连接极不稳定，笔者推荐将npm源替换为npmmirror镜像源（即原阿里源，个中关系参见<a href="/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page">疑难解答</a>），这一步骤非常简单，只需在命令行输入下列命令，回车执行即可：</p>
 <pre><code class="lang-bash">npm config set registry https://registry.npmmirror.com
@@ -533,8 +586,8 @@ npm -v
 <p>当然，npmmirror还提供了另一种换源方法，就是用npmmirror定制的包管理工具cnpm代替npm，具体命令为：</p>
 <pre><code class="lang-bash">npm install -g cnpm --registry=https://registry.npmmirror.com
 </code></pre>
-<p>不过，笔者对cnpm并不熟悉，导致在后续的hexo安装时频频报错，最后决定放弃使用cnpm，改回原生的包管理工具npm。此外，也有知乎网友指出，换用cnpm后，因为cnpm奇葩的存放位置（hexo的软连接没有放在/usr/local/bin，而是放在/var/root/.npm-global/lib/node_modules/hexo-cli/bin），导致<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/332969173">即使正确安装hexo-cli，也找不到hexo命令</a>。综合以上两点，笔者建议直接用npm config更换npm源，而非采用cnpm来换源（毕竟安装cnpm时也要修改registry）。</p>
-<p>接下来，在你的工作区中，创建一个新文件夹，用以存放发布在GitHub主页的文章，以及运行GitHub主页所需要的代码（比如笔者就将其放在<code>C:\Workbench\chemlzh.github.io</code>）。然后，运行命令行（如果文件夹在C盘上，一定要以管理员权限运行命令行！否则没有读写权限！），并跳转到刚创建的文件夹。之后，输入下列命令，安装hexo的客户端版本：</p>
+<p>不过，笔者对cnpm并不熟悉，导致在后续的hexo安装时频频报错，最后决定放弃使用cnpm，改回原生的包管理工具npm。此外，也有知乎网友指出，换用cnpm后，因为cnpm奇葩的存放位置（hexo的软连接没有放在<code>/usr/local/bin</code>，而是放在<code>/var/root/.npm-global/lib/node_modules/hexo-cli/bin</code>），导致<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/332969173">即使正确安装hexo-cli，也找不到hexo命令</a>。<strong>综合以上两点，笔者建议直接用npm config更换npm源，而非采用cnpm来换源（毕竟安装cnpm时也要修改registry）</strong>。</p>
+<h4 id="在本地部署Hexo框架，生成初始GitHub主页"><a href="#在本地部署Hexo框架，生成初始GitHub主页" class="headerlink" title="在本地部署Hexo框架，生成初始GitHub主页"></a>在本地部署Hexo框架，生成初始GitHub主页</h4><p>接下来，在你的工作区中，创建一个新文件夹，用以存放发布在GitHub主页的文章，以及运行GitHub主页所需要的代码（比如笔者就将其放在<code>C:\Workbench\chemlzh.github.io</code>）。然后，运行命令行（如果文件夹在C盘上，一定要以管理员权限运行命令行！否则没有读写权限！），并跳转到刚创建的文件夹。之后，输入下列命令，安装hexo的客户端版本：</p>
 <pre><code class="lang-bash">npm i hexo-cli -g
 </code></pre>
 <p>正常安装后，命令行通常会输出如下提示</p>
@@ -567,22 +620,55 @@ hexo s
 </code></pre>
 <p>不过，由于是首次创建，且尚未添加任何主题模板，因此显示的是hexo默认风格界面，且归档文章中只有一篇“hello world”。</p>
 <center class="half">
-<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig5.webp" style="zoom: 90%;">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig2_3.webp" style="zoom: 90%;">
 </center>
-<center><strong>图5</strong>    首次创建hexo环境时，在本地显示的博客界面（图片引自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111614119">随风的文章</a>）</center>
+<center><strong>图2.3</strong>    首次创建hexo环境时，在本地显示的博客界面（图片引自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111614119">随风的文章</a>）</center>
 
 <p><strong>备注：</strong>如果按<a target="_blank" rel="noopener" href="https://blog.csdn.net/github_39655029/article/details/105397485">Windows 下 Node.js 的安装图文教程</a>，修改了包存放路径，那么在运行<code>hexo init .</code>时，将会提示“hexo”命令不存在。此时，应依次打开“Windows设置”→“系统”→“关于”→“高级系统设置”→“环境变量”，将hexo-cli目录下的bin添加至PATH中（以笔者为例，便是在全局变量的PATH中，添加一条<code>C:\Program Files\nodejs\node_global\node_modules\hexo-cli\bin</code>），然后点击“确定”。随后，重新打开终端（若提示无读写权限，需以管理员身份打开），进入博客文件夹，重新运行<code>hexo init .</code>，此时该文件夹将正常生成hexo框架文件。在大部分情况下，该策略对未修改npm包存放路径，但提示“hexo”命令不存在的情形也有效（尚未测试）。</p>
-<h4 id="Part-III-将Material主题应用到GitHub主页"><a href="#Part-III-将Material主题应用到GitHub主页" class="headerlink" title="Part III. 将Material主题应用到GitHub主页"></a>Part III. 将Material主题应用到GitHub主页</h4><h4 id="Part-IV-部分实用插件的安装与配置"><a href="#Part-IV-部分实用插件的安装与配置" class="headerlink" title="Part IV. 部分实用插件的安装与配置"></a>Part IV. 部分实用插件的安装与配置</h4><h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p><strong>Part 0：</strong></p>
+<h3 id="Part-III-将Material主题应用到GitHub个人主页"><a href="#Part-III-将Material主题应用到GitHub个人主页" class="headerlink" title="Part III. 将Material主题应用到GitHub个人主页"></a>Part III. 将Material主题应用到GitHub个人主页</h3><h4 id="为什么不采用Hexo的默认主题，而采用自定义主题？"><a href="#为什么不采用Hexo的默认主题，而采用自定义主题？" class="headerlink" title="为什么不采用Hexo的默认主题，而采用自定义主题？"></a>为什么不采用Hexo的默认主题，而采用自定义主题？</h4><p>请诸位回到Part II的结尾部分，看一看Hexo的默认风格界面吧。诚然，这个界面以白色与灰色为主色调，没有东拼西贴的小广告，与10-20年前绝大多数网站相比，可谓是简洁清爽。但仔细一想，总感觉缺了点什么——或许，对某些人而言，默认界面缺的是鲜明的色彩，扁平化的界面设计；或许，对某些人而言，默认界面缺的则是黑白的对比，棱角分明的冷艳感。</p>
+<p>除渲染风格较为乏味外，Hexo的默认风格界面，还缺了许多有意思的功能选项：例如，我想给每篇文章加一张亮眼的题图，可是默认界面的文章根本不会显示题图；我想把归档日志和最近发表折叠到边栏，可是默认界面显示的是顶栏，而且主界面中并没有把归档日志收纳起来……</p>
+<p>显然，建站者日益增长的审美与实用需求，与默认主题较为贫瘠的生产力之间，产生了巨大的矛盾，这促使广大的开发者对Hexo主题进行个性化修改，自定义主题因此诞生。</p>
+<p>想要色彩鲜明的扁平化设计？Material主题就很适合你：</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig3_1.png" style="zoom: 40%;">
+</center>
+<center><strong>图3.1</strong>    Material主题演示页（<a target="_blank" rel="noopener" href="https://iblh.github.io/material-demo/">原网页见此</a>）</center>
+
+<p>想要遵循KISS原则的教诲，在黑白二色间自由翱翔？那就尝试一下NexT主题：</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig3_2.png" style="zoom: 40%;">
+</center>
+<center><strong>图3.2</strong>    NexT主题演示页（<a target="_blank" rel="noopener" href="https://theme-next.org/">原网页见此</a>）</center>
+
+<p>甚至，看官想来点二次元？也有大手子做好了明日方舟主题：</p>
+<center class="half">
+<img src="/2022/11/18/guide-to-creating-a-GitHub-page-with-Hexo-framework/creating_GitHub_pages_fig3_3.png" style="zoom: 40%;">
+</center>
+<center><strong>图3.3</strong>    Arknight主题演示页（<a target="_blank" rel="noopener" href="https://ark.theme.yueplus.ink/">原网页见此</a>）</center>
+
+<p>可以说，除了极其个性化的设计外（这得自己动手丰衣足食），任何你想到的界面风格，都可以在GitHub上找到对应的主题源码，只要正确的下载与安装，再加上适当的调参，便能将单调的Hexo初始页面，打造为炫酷的个人主页！</p>
+<p>好了，废话少说，让我们看看怎么在初始的Hexo框架上，添加Material主题吧。至于为什么要采用Material主题，笔者在这一节的结尾给出了充分的理由，请诸位务必往下阅读哦！</p>
+<h4 id="如何添加Material主题"><a href="#如何添加Material主题" class="headerlink" title="如何添加Material主题"></a>如何添加Material主题</h4><p>……</p>
+<h4 id="私货：为什么选择了Material主题？"><a href="#私货：为什么选择了Material主题？" class="headerlink" title="私货：为什么选择了Material主题？"></a>私货：为什么选择了Material主题？</h4><p>……</p>
+<h3 id="Part-IV-为GitHub个人主页添加文章、分类与标签"><a href="#Part-IV-为GitHub个人主页添加文章、分类与标签" class="headerlink" title="Part IV. 为GitHub个人主页添加文章、分类与标签"></a>Part IV. 为GitHub个人主页添加文章、分类与标签</h3><p>……</p>
+<h3 id="Part-V-部分实用插件的安装与配置"><a href="#Part-V-部分实用插件的安装与配置" class="headerlink" title="Part V. 部分实用插件的安装与配置"></a>Part V. 部分实用插件的安装与配置</h3><h4 id="数学公式插件：hexo-renderer-mathjax"><a href="#数学公式插件：hexo-renderer-mathjax" class="headerlink" title="数学公式插件：hexo-renderer-mathjax"></a>数学公式插件：hexo-renderer-mathjax</h4><h4 id="为你的文章配上题图、插图与站内超链接：hexo-asset-image与hexo-asset-link"><a href="#为你的文章配上题图、插图与站内超链接：hexo-asset-image与hexo-asset-link" class="headerlink" title="为你的文章配上题图、插图与站内超链接：hexo-asset-image与hexo-asset-link"></a>为你的文章配上题图、插图与站内超链接：hexo-asset-image与hexo-asset-link</h4><h3 id="Part-VI-将本地生成的网页部署到GitHub"><a href="#Part-VI-将本地生成的网页部署到GitHub" class="headerlink" title="Part VI. 将本地生成的网页部署到GitHub"></a>Part VI. 将本地生成的网页部署到GitHub</h3><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><strong>Part 0：</strong></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wanglin_lin/article/details/48845343">版本控制工具(CVS、SVN、GIT)简介</a></p>
 <p><strong>Part I：</strong></p>
-<p>（暂略）</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-remote-repo.html">Git 远程仓库(Github)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/git-guide.html">Github 简明教程</a></p>
 <p><strong>Part II：</strong></p>
 <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo中文文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/github_39655029/article/details/105397485">Windows 下 Node.js 的安装图文教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/332969173">安装hexo 提示 command not found，怎么解决？</a></p>
 <p><strong>Part III：</strong></p>
-<p>（暂略）</p>
+<p><a target="_blank" rel="noopener" href="https://neko-dev.github.io/material-theme-docs/#/">Material Theme Docs</a></p>
 <p><strong>Part IV：</strong></p>
+<p>（暂略）</p>
+<p><strong>Part V：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://moonglade.top/2022/02/26/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo-material%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9%E8%AE%B0%E5%BD%95/index.html">hexo&amp;material配置修改记录</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhangjichengcc.github.io/blog/2018/02/27/hexo-%E5%88%9B%E5%BB%BA%E6%96%87%E7%AB%A0/">hexo 创建文章 &amp; 文章缩略图及banner &amp; MarkDown</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/iblh/hexo-theme-material/issues/743">请问，这个主题如何指定文章的封面图片呢和放大博客文章中的图片？ （Issue #743）</a></p>
+<p><strong>Part VI：</strong></p>
 <p>（暂略）</p>
 
         
@@ -939,6 +1025,9 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+
+    <!-- Busuanzi -->
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
