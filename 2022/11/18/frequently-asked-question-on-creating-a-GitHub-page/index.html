@@ -88,7 +88,7 @@
         
             
                 <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-bright.min.css?8VgE6WqhtH02IzxbAnMvKA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
             
         
 
@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Fri Nov 18 2022 07:59:59 GMT+0800">
-        <meta property="article:modified_time" content="Fri Nov 18 2022 15:24:46 GMT+0800">
+        <meta property="article:modified_time" content="Sun Nov 20 2022 16:32:45 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://chemlzh.github.io/2022/11/18/frequently-asked-question-on-creating-a-GitHub-page/index.html",
     "headline": "搭建GitHub主页的常见问题",
     "datePublished": "Fri Nov 18 2022 07:59:59 GMT+0800",
-    "dateModified": "Fri Nov 18 2022 15:24:46 GMT+0800",
+    "dateModified": "Sun Nov 20 2022 16:32:45 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Clemmensen",
@@ -525,7 +525,7 @@
 <p>这一部分原本作用是调用disqus评论服务，但在版本更迭的过程中，作者似乎忘记了theme.comment.use可能没有初始化（或等于null），因此没有加一条“是否开启（特定的）博客评论服务”的判断语句，导致……</p>
 <p><strong>解决方案</strong></p>
 <p>a) 如果对Material主题包的版本不介意的话，安装旧版本的Material主题包即可解决问题。旧版本的Material主题包在<a target="_blank" rel="noopener" href="https://github.com/iblh/hexo-theme-material/releases">Material Releases</a>中，下拉找到1.5.2版，下载后按照教程安装即可。</p>
-<p>b) 如果执意采用高于1.5.2的Material主题包，解决方案则是直接修改dnsprefetch.ejs的出错语句。假设Material主题包放在了博客的themes文件夹下，名字叫hexo-theme-material，则dnsprefetch.ejs应该位于/(your_blog_name)/themes/hexo-theme-material/layout/_widget。找到dnsprefetch.ejs，用记事本（或VSCode）打开，定位到第21行（查找“startsWith”也能定位到该语句），将其改为：</p>
+<p>b) 如果执意采用高于1.5.2的Material主题包，解决方案则是直接修改dnsprefetch.ejs的出错语句。假设Material主题包放在了博客的themes文件夹下，名字叫hexo-theme-material，则dnsprefetch.ejs应该位于<code>/(your_blog_name)/themes/hexo-theme-material/layout/_widget</code>。找到dnsprefetch.ejs，用记事本（或VSCode）打开，定位到第21行（查找“startsWith”也能定位到该语句），将其改为：</p>
 <pre><code class="lang-javascript">&lt;% &#125; else if(theme.comment.use &amp;&amp; theme.comment.use.startsWith(&quot;disqus&quot;)) &#123; %&gt;
 </code></pre>
 <p>保存后在博客根目录下启动git bash，输入hexo clean后运行，再输入hexo g重新生成，这样便能解决上述错误。</p>
@@ -986,21 +986,6 @@ console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>
