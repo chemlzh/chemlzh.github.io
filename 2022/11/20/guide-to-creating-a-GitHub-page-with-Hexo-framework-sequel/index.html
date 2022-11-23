@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Sun Nov 20 2022 11:59:30 GMT+0800">
-        <meta property="article:modified_time" content="Tue Nov 22 2022 23:42:06 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 23 2022 19:32:46 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://chemlzh.github.io/2022/11/20/guide-to-creating-a-GitHub-page-with-Hexo-framework-sequel/index.html",
     "headline": "基于Hexo框架的GitHub个人主页搭建教程（后篇）",
     "datePublished": "Sun Nov 20 2022 11:59:30 GMT+0800",
-    "dateModified": "Tue Nov 22 2022 23:42:06 GMT+0800",
+    "dateModified": "Wed Nov 23 2022 19:32:46 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Clemmensen",
@@ -739,8 +739,46 @@ hanabi:
 </center>
 <center><strong>图4.9</strong>    prettify插件采用“Tomorrow Night Bright”主题的渲染效果</center>
 
-<h3 id="Part-V-部分实用插件的安装与配置"><a href="#Part-V-部分实用插件的安装与配置" class="headerlink" title="Part V. 部分实用插件的安装与配置"></a>Part V. 部分实用插件的安装与配置</h3><h4 id="数学公式插件：hexo-renderer-mathjax"><a href="#数学公式插件：hexo-renderer-mathjax" class="headerlink" title="数学公式插件：hexo-renderer-mathjax"></a>数学公式插件：hexo-renderer-mathjax</h4><p>身为一个化学搬砖工，有时也不可避免跟数学公式打交道，虽然Markdown支持以LaTeX格式书写数学公式，但是个人主页采用的Hexo框架，却没有自带渲染数学公式的插件，也就不能将LaTeX格式的数学公式，转换为便于阅读的印刷格式。幸好，通过安装第三方开发的MathJax插件，原生Hexo博客上无法显示的LaTeX形式的数学公式，也能得到正确的解析与渲染，妈妈再也不用担心博客写不出公式了（笑）。</p>
-<p>……</p>
+<h3 id="Part-V-部分实用插件的安装与配置"><a href="#Part-V-部分实用插件的安装与配置" class="headerlink" title="Part V. 部分实用插件的安装与配置"></a>Part V. 部分实用插件的安装与配置</h3><h4 id="数学公式插件：hexo-renderer-mathjax"><a href="#数学公式插件：hexo-renderer-mathjax" class="headerlink" title="数学公式插件：hexo-renderer-mathjax"></a>数学公式插件：hexo-renderer-mathjax</h4><p>身为一个化学搬砖工，有时也不可避免跟数学公式打交道，虽然Markdown支持以LaTeX格式书写数学公式，但是个人主页采用的Hexo框架，却没有自带渲染数学公式的插件，也就不能将LaTeX格式的数学公式，转换为便于阅读的印刷体。幸好，通过安装第三方开发的MathJax插件，原生Hexo博客上无法显示的LaTeX形式的数学公式，也能得到正确的解析与渲染，妈妈再也不用担心博客写不出公式了（笑）。</p>
+<p>在启用第三方MathJax插件前，我们首先要把默认的文字渲染引擎<code>hexo-renderer-marked</code>，更换为加强版的<code>hexo-renderer-kramed</code>，这是因为<code>marked</code>没有对MathJax的支持。为此，我们在根目录启用Git bash，输入以下命令：</p>
+<pre><code class="lang-bash">npm uninstall hexo-renderer-marked --save
+npm install hexo-renderer-kramed --save
+</code></pre>
+<p>下一步是修改<code>hexo-renderer-kramed</code>的渲染代码，它位于<code>node_modules/hexo-renderer-kramed/lib/renderer.js</code>。找到下列代码：</p>
+<pre><code class="lang-javascript">// Change inline math rule
+function formatText(text) &#123;
+    // Fit kramed&#39;s rule: $$ + \1 + $$
+    return text.replace(/`\$(.*?)\$`/g, &#39;$$$$$1$$$$&#39;);
+&#125;
+</code></pre>
+<p>将其改为</p>
+<pre><code class="lang-javascript">// Change inline math rule
+function formatText(text) &#123;
+    return text;
+&#125;
+</code></pre>
+<p>这是因为在<code>kramed</code>下，行内公式的插入形式为<code>&#96;$(math_equation)$&#96;</code>，而Markdown行内公式的插入形式为<code>$(math_equation)$</code>，为符合Markdown的使用习惯，只能将formatText的返回值改为<code>text</code>。</p>
+<p>第三步，才是安装第三方MathJax插件，在此之前，为避免可能发生的插件冲突，我们要彻底卸载Hexo原生的数学插件。在根目录打开Git bash，运行下列命令，卸载<code>hexo-math</code>：</p>
+<pre><code class="lang-bash">npm uninstall hexo-math --save
+</code></pre>
+<p>然后执行下列安装命令，这里我们选用<code>hexo-renderer-mathjax</code>：</p>
+<pre><code class="lang-bash">npm install hexo-renderer-mathjax --save
+</code></pre>
+<p>从个人主页的根目录下，找到其下的<code>/node_modules/hexo-renderer-mathjax/mathjax.html</code>，用记事本或VSCode打开，定位到最后一行（其格式为<code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code>），将其替换为</p>
+<pre><code class="lang-html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>到这一步，MathJax的配置大致完成，之后是针对Markdown书写格式兼容性的修改，以及MathJax的全局启用。从个人主页的根目录下，转到<code>node_modules/kramed/lib/rules/inline.js</code>，根据<code>var inline = &#123;...&#125;</code>定位代码块，其大致分布在第10-28行。我们将原有的escape和em选项注释掉，它们的形态大致为</p>
+<pre><code class="lang-javascript">escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,
+em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+</code></pre>
+<p>并在对应行后面另起一行，填入新的escape和em选项，确认无误后保存。这样，Kramed的转义规则就不会把_和^转义为<code>&lt;em&gt;</code>。</p>
+<pre><code class="lang-javascript">escape: /\\([`*\[\]()# +\-.!_&gt;])/,
+em: /\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+</code></pre>
+<p>最后，回到根目录的<code>_config.yml</code>，在末尾添加如下代码并保存，之后重新编译网页，就能让个人网页正确渲染Markdown公式了。</p>
+<pre><code class="lang-yaml">mathjax:
+  enable: true
+</code></pre>
 <h4 id="以Markdown格式添加插图与站内超链接：hexo-asset-link"><a href="#以Markdown格式添加插图与站内超链接：hexo-asset-link" class="headerlink" title="以Markdown格式添加插图与站内超链接：hexo-asset-link"></a>以Markdown格式添加插图与站内超链接：hexo-asset-link</h4><p>众所周知，<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders">原生的Hexo不支持以Markdown语法格式，结合相对路径插入图片</a>，因为这可能会导致它们在存档页或者主页上显示不正确。如果执意要以相对路径的形式，在原生Hexo博客中添加插图或超链接，就必须要编写成如下形式：</p>
 <pre><code class="lang-markdown">&#123;% asset_path /.../... This is an example path %&#125;
 &#123;% asset_img example.jpg This is an example image %&#125;
@@ -752,7 +790,14 @@ hanabi:
 [This is an example path](https://.../...)
 </code></pre>
 <p>可以看到，原生Hexo格式，很难一眼分辨出哪部分是图片（或超链接地址），哪部分是文字说明，并且还要额外指定插入的是何种类型的附件；相比之下，Markdown格式把文字说明和附件地址，分别放在了中括号和小括号，并且不需要指定附件类型。两相比较，高下一目了然——自然是Markdown格式更胜一筹。</p>
-<p>……</p>
+<p>目前，许多开发者已经开发出Hexo原生格式到Markdown格式的转化插件，其中常用的有hexo-asset-link，它的安装方法很简单，只需在根目录运行如下命令即可：</p>
+<pre><code class="lang-bash">npm install -s hexo-asset-link
+</code></pre>
+<p>安装后，确保根目录<code>_config.yml</code>中，<code>post_asset_folder:</code>选项为true，且_posts同时存有博客文章和同名资源文件夹，就能往GitHub个人主页添加插图。例如以Markdown格式插入example.jpg，就将example.jpg拷贝至资源文件夹，然后打开对应的博客文章，在指定位置写下<code>[This is an example image](example.jpg)</code>。</p>
+<p>又如，要想插入站内链接，就往博客文章中写下</p>
+<pre><code class="lang-markdown">[This is an example path](/(article_year)/(article_month)/(article_day)/(article_name))
+</code></pre>
+<p>之后重新编译网页，就能在博客内显示相应的站内链接。</p>
 <h4 id="让站内搜索帮你找文章：hexo-generator-search"><a href="#让站内搜索帮你找文章：hexo-generator-search" class="headerlink" title="让站内搜索帮你找文章：hexo-generator-search"></a>让站内搜索帮你找文章：hexo-generator-search</h4><p>相信诸位都会有这样的经历：明明记得在某个网站上看到一篇非常实用的文章，结果因为忘记收藏，下次再想调取时，只能凭着记忆一篇篇翻阅，可谓是劳力又劳心。而即将介绍的站内搜索插件，便能将这样的苦恼一扫而空！</p>
 <p>安装方法也非常简单，首先到个人主页的根目录，打开Git bash，输入如下命令，安装hexo-generator-search：</p>
 <pre><code class="lang-bash">npm install hexo-generator-search --save
@@ -803,7 +848,11 @@ hanabi:
 
 <p>双击安装包，勾选用户协议，然后保持默认选项不变，一路点选“下一步”，完成安装。</p>
 <p>之后启动GitHub Desktop，此时它会弹出登录界面，提示你输入GitHub账号和密码。我们按照指示，依次填写创建GitHub个人主页所使用的账号与密码，点击“Sign in”登录，此时GitHub会往注册邮箱发送含有六位验证码的邮件，并提示我们填入正确的验证码，我们只需打开邮箱，将验证邮件附带的验证码复制过来，就可以完成登录。</p>
-<p>登录后的GitHub Desktop界面如图6.3所示，除菜单栏外，可分为如下几个部分：（1）<strong>地址栏与状态栏</strong>，它们位于窗口正上方，其中地址栏用于显示和切换需要更改的代码仓库与分支，而状态栏则表示本地的代码仓库是否与远程的GitHub仓库同步；（2）<strong>修改记录区</strong>，它位于窗口左侧，会标注出本地的代码仓库中哪些文件进行了修改，哪些文件被添加，哪些文件被移除；（3）<strong>提交总结与描述区</strong>，当本地的代码仓库中有文件修改或增删，而持有者想要把上述变动应用到远程的GitHub仓库时，就要在这个区域写下提交代码的总结，以及本次提交的代码相较于前一版本的代码有何异同；（4）<strong>工作区</strong>，它占据着窗口的大部分，会显示修改记录区中选中的文件，是在具体的哪个区域发生了变动，变动前后的内容又是什么。</p>
+<p>登录后的GitHub Desktop界面如图6.3所示，除菜单栏外，可分为如下几个部分：</p>
+<p>（1）<strong>地址栏与状态栏</strong>，它们位于窗口正上方，其中地址栏用于显示和切换需要更改的代码仓库与分支，而状态栏则表示本地的代码仓库是否与远程的GitHub仓库同步；</p>
+<p>（2）<strong>修改记录区</strong>，它位于窗口左侧，会标注出本地的代码仓库中哪些文件进行了修改，哪些文件被添加，哪些文件被移除；</p>
+<p>（3）<strong>提交总结与描述区</strong>，当本地的代码仓库中有文件修改或增删，而持有者想要把上述变动应用到远程的GitHub仓库时，就要在这个区域写下提交代码的总结，以及本次提交的代码相较于前一版本的代码有何异同；</p>
+<p>（4）<strong>工作区</strong>，它占据着窗口的大部分，会显示修改记录区中选中的文件，是在具体的哪个区域发生了变动，变动前后的内容又是什么。</p>
 <center class="half">
 <img src="/2022/11/20/guide-to-creating-a-GitHub-page-with-Hexo-framework-sequel/creating_GitHub_pages_fig6_3.png" style="zoom: 40%;">
 </center>
@@ -877,9 +926,10 @@ hanabi:
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/RioTian/p/14111021.html">Markdown 公式指导手册</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/29017171">hexo 下的分类和表签无法显示，怎么解决？</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21650209">hexo 怎么创建 404 页面？</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhangjichengcc.github.io/blog/2018/02/27/hexo-%E5%88%9B%E5%BB%BA%E6%96%87%E7%AB%A0/">hexo 创建文章 &amp; 文章缩略图及banner &amp; MarkDown</a></p>
 <p><strong>Part V：</strong></p>
 <p><a target="_blank" rel="noopener" href="https://moonglade.top/2022/02/26/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hexo-material%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9%E8%AE%B0%E5%BD%95/index.html">hexo&amp;material配置修改记录</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhangjichengcc.github.io/blog/2018/02/27/hexo-%E5%88%9B%E5%BB%BA%E6%96%87%E7%AB%A0/">hexo 创建文章 &amp; 文章缩略图及banner &amp; MarkDown</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e8d433a2c5b7">如何在 hexo 中支持 Mathjax？</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/iblh/hexo-theme-material/issues/743">请问，这个主题如何指定文章的封面图片呢和放大博客文章中的图片？ （Issue #743）</a></p>
 <p><a target="_blank" rel="noopener" href="https://easyhexo.com/2-Theme-use-and-config/2-5-hexo-theme-material/">hexo-theme-material | Easy Hexo</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.programmerall.com/article/95331088559/">Use the Material theme for Hexo</a></p>
