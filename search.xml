@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>实验室服务器运维记录(1)</title>
+      <link href="/2024/05/21/lab-server-maintenance-record/"/>
+      <url>/2024/05/21/lab-server-maintenance-record/</url>
+      
+        <content type="html"><![CDATA[<p>以下为Tanglab实验室服务器的运维记录，主要记载部分计算化学软件的安装</p><h3 id="Gromacs-2023-with-CUDA"><a href="#Gromacs-2023-with-CUDA" class="headerlink" title="Gromacs 2023 with CUDA"></a>Gromacs 2023 with CUDA</h3><p><a href="http://sobereva.com/457">GROMACS的安装方法（含全程视频演示） - 思想家公社的门口：量子化学·分子模拟·二次元</a></p><p>(2024.02.22) 因原有Gromacs不支持CUDA，现重新编译，之前已手动编译cmake和fftw3310，故直接进入安装部分</p><p>下载gromacs2023.tar.gz，解压至/smb/open-apps，进入解压后的目录，在终端里依次运行</p><pre><code class="lang-bash">mkdir buildcd buildexport CMAKE_PREFIX_PATH=/smb/open-apps/fftw3310cmake .. -DCMAKE_INSTALL_PREFIX=/smb/open-apps/gmx2023 -DGMX_GPU=CUDA -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.8make install -j</code></pre><p>安装完成后，在环境变量中添加</p><pre><code class="lang-bash">source /smb/open-apps/gmx2023/bin/GMXRC</code></pre><p>目前输入gmx运行有反应，等待令屾反馈</p><p>(2024.02.25) 应令屾要求，改装为双精度+MPI版本，以确保模拟大体系时收敛，同时满足跨节点要求，故在原指令基础上进一步改动。值得注意的是，只有单精度版本支持GPU加速，双精度版本不支持！</p><p>FFTW库编译如下（位于安装包目录/smb/open-apps/fftw-3.3.10下）：</p><pre><code class="lang-bash">#双精度版本./configure --prefix=/smb/open-apps/fftw3310 --enable-sse2 --enable-avx --enable-sharedmake -jmake install -j#单精度版本./configure --prefix=/smb/open-apps/fftw3310_float --enable-sse2 --enable-avx --enable-float --enable-sharedmake -jmake install -j</code></pre><p>OpenMPI编译如下（位于安装包目录/smb/open-apps/openmpi-5.0.2下）：</p><pre><code class="lang-bash">./configure --prefix=/smb/open-apps/openmpi502make -jmake install -j</code></pre><p>安装完成后，在环境变量中添加（此方法已废止，改用environment modules管理，见下文）：</p><pre><code class="lang-bash">export PATH=$PATH:/smb/open-apps/openmpi502/binexport LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/smb/open-apps/openmpi502/lib</code></pre><p>Gromacs编译如下：</p><pre><code class="lang-bash">mkdir buildcd build# 编译单精度，带CUDA GPU加速export CMAKE_PREFIX_PATH=/smb/open-apps/fftw3310_floatcmake .. -DCMAKE_INSTALL_PREFIX=/smb/open-apps/gmx2023 -DGMX_GPU=CUDA -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.8make -jmake install -j# 编译单精度+mpi版本，带CUDA GPU加速export CMAKE_PREFIX_PATH=/smb/open-apps/fftw3310_floatcmake .. -DCMAKE_INSTALL_PREFIX=/smb/open-apps/gmx2023 -DGMX_MPI=ON -DGMX_GPU=CUDA -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.8make -jmake install -j# 编译双精度+mpi版本（上一步编译的是mpi版本，这一步忘记关MPI选项，所以仍编译mpi版本）export CMAKE_PREFIX_PATH=/smb/open-apps/fftw3310cmake .. -DCMAKE_INSTALL_PREFIX=/smb/open-apps/gmx2023 -DGMX_DOUBLE=ON -DGMX_GPU=OFFmake -jmake install -j# 编译双精度版本export CMAKE_PREFIX_PATH=/smb/open-apps/fftw3310cmake .. -DCMAKE_INSTALL_PREFIX=/smb/open-apps/gmx2023 -DGMX_MPI=OFF -DGMX_DOUBLE=ON -DGMX_GPU=OFFmake -jmake install -j</code></pre><p>(2024.02.27) 反馈说gmx_d无法启用thread_mpi，怀疑是-DGMX_MPI=OFF顺带把thread_mpi关掉了，因此重编译如下</p><pre><code class="lang-bash"># located in /smb/open-apps/gromacs2023/build# 编译双精度版本export CMAKE_PREFIX_PATH=/smb/open-apps/fftw3310cmake .. -DCMAKE_INSTALL_PREFIX=/smb/open-apps/gmx2023 -DGMX_MPI=OFF -DGMX_THREAD_MPI=ON -DGMX_DOUBLE=ON -DGMX_GPU=OFFmake -jmake install -j</code></pre><h3 id="环境变量管理器Environment-Modules"><a href="#环境变量管理器Environment-Modules" class="headerlink" title="环境变量管理器Environment Modules"></a>环境变量管理器Environment Modules</h3><p>安装environment modules：</p><pre><code class="lang-bash">sudo apt-get -y install environment-modules</code></pre><p>为自配的OpenMPI 5.0.2配置环境变量，进入/usr/share/modules/modulefiles，以管理员权限创建目录/mpi/openmpi，并在openmpi文件夹下输入以下命令</p><pre><code class="lang-bash"># 创建module文件sudo vim 5.0.2# 在vim界面，按I键启用添加文字，输入下述代码#%Modulesetenv OPAL_PREFIX /smb/open-apps/openmpi502setenv OPAL_LIBDIR /smb/open-apps/openmpi502/libprepend-path PATH /smb/open-apps/openmpi502/binprepend-path LIBRARY_PATH /smb/open-apps/openmpi502/libprepend-path LD_LIBRARY_PATH /smb/open-apps/openmpi502/lib# 按Esc键退出vim增添模式，输入:wq，回车，保存文件# 查看已知modulesmodule avail--------------------/usr/share/modules/modulefiles --------------------dot  module-git  module-info  modules  mpi/openmpi/5.0.2  null  use.ownKey:loaded  modulepath# 启用openmpi环境module load mpi/openmpi/5.0.2# 停用openmpi环境module unload mpi/openmpi/5.0.2</code></pre><h3 id="Wolfram-Mathematica-Wolfram-Engine"><a href="#Wolfram-Mathematica-Wolfram-Engine" class="headerlink" title="Wolfram Mathematica/Wolfram Engine"></a>Wolfram Mathematica/Wolfram Engine</h3><p>下载链接：</p><p><a href="https://www.wolfram.com/engine/">Wolfram Engine</a></p><p>在上述页面选择对应的Linux版本下载，之后注册Wolfram ID，获取免费使用许可证</p><p>将安装包置于/smb/open-apps下，输入sudo bash WolframEngine_14.0.0_LINUX.sh，运行安装程序</p><pre><code class="lang-bash">Wolfram Engine 14.0.0 for LINUX Installer ArchiveVerifying archive integrity. Extracting installer...............------------------------------------------------------------------------                        Wolfram Engine 14.0 Installer ------------------------------------------------------------------------Copyright (c) 1988-2023 Wolfram Research, Inc. All rights reserved.WARNING: Wolfram Engine is protected by copyright law and internationaltreaties. Unauthorized reproduction or distribution may result in severecivil and criminal penalties and will be prosecuted to the maximum extentpossible under law.Enter the installation directory, or press Enter to select/smb/open-apps/Wolfram/WolframEngine/14.0:&gt;Type the directory path in which the Wolfram Engine script(s) will be created,or press Enter to select /usr/local/bin:&gt;</code></pre><p>用环境变量管理器，在/usr/share/modules/modulefiles下创建目录/wolfram_engine，以及下属文件14.0，内容如下：</p><pre><code class="lang-bash">#%Modulesetenv WolframKernel /smb/open-apps/Wolfram/WolframEngine/14.0/Executables/WolframKernelprepend-path PATH /usr/local/bin</code></pre><p>用module load wolfram_engine/14.0加载环境，输入wolframscript，跳出激活页面</p><pre><code class="lang-bash">The Wolfram Engine requires one-time activation on this computer.Visit https://wolfram.com/engine/free-license to get your free license.Wolfram ID: user@email.comPassword:</code></pre><p>输入刚注册的Wolfram ID和密码即可，不过目前发现每次用module load加载后，运行wolframscript都要激活，暂时没有更好的解决方案</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GROMACS </tag>
+            
+            <tag> Mathematica </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于Hexo框架的GitHub个人主页搭建教程（后篇）</title>
       <link href="/2022/11/20/guide-to-creating-a-GitHub-page-with-Hexo-framework-sequel/"/>
       <url>/2022/11/20/guide-to-creating-a-GitHub-page-with-Hexo-framework-sequel/</url>
